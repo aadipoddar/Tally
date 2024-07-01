@@ -1,5 +1,5 @@
-namespace Tally
-{
+namespace Tally;
+
     internal static class Program
     {
         /// <summary>
@@ -14,4 +14,3 @@ namespace Tally
             Application.Run(new Dashboard());
         }
     }
-}

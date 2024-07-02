@@ -7,10 +7,15 @@ public partial class CreateCompanyForm : Form
 {
 	CompanyModel companyModel = new();
 	CompanyData companyData = new();
+	Dashboard dashboard = new();
+	public String oldCompanyName;
 
-	public CreateCompanyForm()
+	public CreateCompanyForm(Dashboard dashboard)
 	{
 		InitializeComponent();
+
+		this.dashboard = dashboard;
+		oldCompanyName = companyNameTextBox.Text;
 	}
 
 	public bool ValidateAndAssign()
@@ -33,16 +38,16 @@ public partial class CreateCompanyForm : Form
 			companyModel.PinCode = int.Parse(pinCodeTextBox.Text);
 
 		if (telephoneNumberTextBox.Text != string.Empty)
-			companyModel.TelephoneNumber = long.Parse(telephoneNumberTextBox.Text);
+			companyModel.TelephoneNumber = telephoneNumberTextBox.Text;
 
 		if (emailTextBox.Text != string.Empty)
 			companyModel.EMail = emailTextBox.Text;
 
 		if (financialYearFromDateTimePicker.Text != string.Empty)
-			companyModel.FinancialYearFrom = DateOnly.Parse(financialYearFromDateTimePicker.Text);
+			companyModel.FinancialYearFrom = DateTime.Parse(financialYearFromDateTimePicker.Text);
 
 		if (booksBeginFromDateTimePicker.Text != string.Empty)
-			companyModel.BooksBeginFrom = DateOnly.Parse(booksBeginFromDateTimePicker.Text);
+			companyModel.BooksBeginFrom = DateTime.Parse(booksBeginFromDateTimePicker.Text);
 
 		if (passwordTextBox.Text != string.Empty)
 			companyModel.Password = passwordTextBox.Text;
@@ -58,10 +63,17 @@ public partial class CreateCompanyForm : Form
 			return;
 		}
 
-		await companyData.CreateDatabase(companyModel.Name);
+		if (createCompanyButton.Text == "Create Company")
+			await companyData.CreateDatabase(companyModel);
 
-		Dashboard dashboard = new();
-		dashboard.listOfCompaniesListBox.Items.Clear();
+		if (createCompanyButton.Text == "Alter Company")
+		{
+			if (oldCompanyName != companyNameTextBox.Text)
+				await companyData.UpdateCompanyDetails(companyModel, oldCompanyName, true);
+			else
+				await companyData.UpdateCompanyDetails(companyModel, oldCompanyName);
+		}
+
 		await dashboard.RefreshCompanyList();
 		Close();
 	}

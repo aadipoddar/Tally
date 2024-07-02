@@ -9,7 +9,6 @@ public partial class Dashboard : Form
 	{
 		InitializeComponent();
 
-		listOfCompaniesListBox.Items.Clear();
 		Task task = RefreshCompanyList();
 	}
 
@@ -29,19 +28,32 @@ public partial class Dashboard : Form
 
 	private void createCompanyButton_Click(object sender, EventArgs e)
 	{
-		CreateCompanyForm createCompany = new();
+		CreateCompanyForm createCompany = new(this);
+		createCompany.createCompanyButton.Text = "Create Company";
 		createCompany.ShowDialog();
 	}
 
-	private void alterComapnyButton_Click(object sender, EventArgs e)
+	private async void alterComapnyButton_ClickAsync(object sender, EventArgs e)
 	{
-		CreateCompanyForm createCompany = new();
-		createCompany.ShowDialog();
-	}
+		CompanyData companyData = new();
+		CompanyModel companyModel = new();
+		companyModel =  await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 
-	public async void refreshButton_Click(object sender, EventArgs e)
-	{
-		await RefreshCompanyList();
+		CreateCompanyForm createCompanyForm = new(this);
+
+		createCompanyForm.createCompanyButton.Text = "Alter Company";
+		createCompanyForm.oldCompanyName = createCompanyForm.companyNameTextBox.Text = companyModel.Name;
+		createCompanyForm.mailingNameTextBox.Text = companyModel.MailingName;
+		createCompanyForm.addressTextBox.Text = companyModel.Address;
+		createCompanyForm.stateTextBox.Text = companyModel.State;
+		createCompanyForm.pinCodeTextBox.Text = companyModel.PinCode.ToString();
+		createCompanyForm.telephoneNumberTextBox.Text = companyModel.TelephoneNumber;
+		createCompanyForm.emailTextBox.Text = companyModel.EMail;
+		createCompanyForm.financialYearFromDateTimePicker.Text = companyModel.FinancialYearFrom.ToString();
+		createCompanyForm.booksBeginFromDateTimePicker.Text = companyModel.BooksBeginFrom.ToString();
+		createCompanyForm.passwordTextBox.Text = companyModel.Password;
+
+		createCompanyForm.ShowDialog();
 	}
 
 	private async void deleteCompanyButton_ClickAsync(object sender, EventArgs e)

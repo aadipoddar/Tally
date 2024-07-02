@@ -145,49 +145,49 @@
 		// 
 		companyNameTextBox.Location = new Point(214, 36);
 		companyNameTextBox.Name = "companyNameTextBox";
-		companyNameTextBox.Size = new Size(100, 23);
+		companyNameTextBox.Size = new Size(200, 23);
 		companyNameTextBox.TabIndex = 10;
 		// 
 		// mailingNameTextBox
 		// 
 		mailingNameTextBox.Location = new Point(214, 74);
 		mailingNameTextBox.Name = "mailingNameTextBox";
-		mailingNameTextBox.Size = new Size(100, 23);
+		mailingNameTextBox.Size = new Size(200, 23);
 		mailingNameTextBox.TabIndex = 11;
 		// 
 		// addressTextBox
 		// 
 		addressTextBox.Location = new Point(214, 112);
 		addressTextBox.Name = "addressTextBox";
-		addressTextBox.Size = new Size(100, 23);
+		addressTextBox.Size = new Size(200, 23);
 		addressTextBox.TabIndex = 12;
 		// 
 		// telephoneNumberTextBox
 		// 
 		telephoneNumberTextBox.Location = new Point(214, 226);
 		telephoneNumberTextBox.Name = "telephoneNumberTextBox";
-		telephoneNumberTextBox.Size = new Size(100, 23);
+		telephoneNumberTextBox.Size = new Size(200, 23);
 		telephoneNumberTextBox.TabIndex = 15;
 		// 
 		// pinCodeTextBox
 		// 
 		pinCodeTextBox.Location = new Point(214, 188);
 		pinCodeTextBox.Name = "pinCodeTextBox";
-		pinCodeTextBox.Size = new Size(100, 23);
+		pinCodeTextBox.Size = new Size(200, 23);
 		pinCodeTextBox.TabIndex = 14;
 		// 
 		// stateTextBox
 		// 
 		stateTextBox.Location = new Point(214, 150);
 		stateTextBox.Name = "stateTextBox";
-		stateTextBox.Size = new Size(100, 23);
+		stateTextBox.Size = new Size(200, 23);
 		stateTextBox.TabIndex = 13;
 		// 
 		// emailTextBox
 		// 
 		emailTextBox.Location = new Point(214, 264);
 		emailTextBox.Name = "emailTextBox";
-		emailTextBox.Size = new Size(100, 23);
+		emailTextBox.Size = new Size(200, 23);
 		emailTextBox.TabIndex = 16;
 		// 
 		// financialYearFromDateTimePicker
@@ -208,14 +208,15 @@
 		// 
 		passwordTextBox.Location = new Point(214, 378);
 		passwordTextBox.Name = "passwordTextBox";
-		passwordTextBox.Size = new Size(100, 23);
+		passwordTextBox.PasswordChar = '*';
+		passwordTextBox.Size = new Size(200, 23);
 		passwordTextBox.TabIndex = 22;
 		// 
 		// createCompanyButton
 		// 
-		createCompanyButton.Location = new Point(152, 487);
+		createCompanyButton.Location = new Point(144, 436);
 		createCompanyButton.Name = "createCompanyButton";
-		createCompanyButton.Size = new Size(110, 23);
+		createCompanyButton.Size = new Size(168, 51);
 		createCompanyButton.TabIndex = 23;
 		createCompanyButton.Text = "Create Company";
 		createCompanyButton.UseVisualStyleBackColor = true;
@@ -225,7 +226,7 @@
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(535, 607);
+		ClientSize = new Size(490, 519);
 		Controls.Add(createCompanyButton);
 		Controls.Add(passwordTextBox);
 		Controls.Add(booksBeginFromDateTimePicker);
@@ -266,15 +267,15 @@
         private Label financialYearFromLabel;
         private Label emaillabel;
         private Label passwordLabel;
-        private TextBox companyNameTextBox;
-        private TextBox mailingNameTextBox;
-        private TextBox addressTextBox;
-        private TextBox telephoneNumberTextBox;
-        private TextBox pinCodeTextBox;
-        private TextBox stateTextBox;
-        private TextBox emailTextBox;
-        private DateTimePicker financialYearFromDateTimePicker;
-        private DateTimePicker booksBeginFromDateTimePicker;
-        private TextBox passwordTextBox;
-        private Button createCompanyButton;
-    }
+	public Button createCompanyButton;
+	public TextBox companyNameTextBox;
+	public TextBox mailingNameTextBox;
+	public TextBox addressTextBox;
+	public TextBox telephoneNumberTextBox;
+	public TextBox pinCodeTextBox;
+	public TextBox stateTextBox;
+	public TextBox emailTextBox;
+	public DateTimePicker financialYearFromDateTimePicker;
+	public DateTimePicker booksBeginFromDateTimePicker;
+	public TextBox passwordTextBox;
+}

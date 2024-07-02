@@ -34,7 +34,6 @@
 		shutCompanyButton = new Button();
 		createCompanyButton = new Button();
 		alterComapnyButton = new Button();
-		refreshButton = new Button();
 		deleteCompanyButton = new Button();
 		SuspendLayout();
 		// 
@@ -98,22 +97,12 @@
 		alterComapnyButton.TabIndex = 5;
 		alterComapnyButton.Text = "Alter Company";
 		alterComapnyButton.UseVisualStyleBackColor = true;
-		alterComapnyButton.Click += alterComapnyButton_Click;
-		// 
-		// refreshButton
-		// 
-		refreshButton.Location = new Point(1040, 160);
-		refreshButton.Name = "refreshButton";
-		refreshButton.Size = new Size(110, 23);
-		refreshButton.TabIndex = 6;
-		refreshButton.Text = "Refresh";
-		refreshButton.UseVisualStyleBackColor = true;
-		refreshButton.Click += refreshButton_Click;
+		alterComapnyButton.Click += alterComapnyButton_ClickAsync;
 		// 
 		// deleteCompanyButton
 		// 
 		deleteCompanyButton.Enabled = false;
-		deleteCompanyButton.Location = new Point(1040, 189);
+		deleteCompanyButton.Location = new Point(1040, 160);
 		deleteCompanyButton.Name = "deleteCompanyButton";
 		deleteCompanyButton.Size = new Size(110, 23);
 		deleteCompanyButton.TabIndex = 7;
@@ -127,7 +116,6 @@
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(1333, 834);
 		Controls.Add(deleteCompanyButton);
-		Controls.Add(refreshButton);
 		Controls.Add(alterComapnyButton);
 		Controls.Add(createCompanyButton);
 		Controls.Add(shutCompanyButton);
@@ -149,5 +137,4 @@
         private Button alterComapnyButton;
 	public ListBox listOfCompaniesListBox;
 	private Button deleteCompanyButton;
-	public Button refreshButton;
 }

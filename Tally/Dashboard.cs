@@ -1,3 +1,5 @@
+using Tally.Company;
+
 using TallyLibrary.Data;
 using TallyLibrary.Models;
 
@@ -37,7 +39,14 @@ public partial class Dashboard : Form
 	{
 		CompanyData companyData = new();
 		CompanyModel companyModel = new();
-		companyModel =  await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+		companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+
+		if (companyModel.Password != "")
+		{
+			PasswordForm passwordForm = new(companyModel.Password, this);
+			passwordForm.ShowDialog();
+			return;
+		}
 
 		CreateCompanyForm createCompanyForm = new(this);
 

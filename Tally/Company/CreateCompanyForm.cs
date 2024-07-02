@@ -1,7 +1,7 @@
 ﻿using TallyLibrary.Data;
 using TallyLibrary.Models;
 
-namespace Tally;
+namespace Tally.Company;
 
 public partial class CreateCompanyForm : Form
 {

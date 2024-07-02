@@ -1,4 +1,4 @@
-﻿namespace Tally;
+﻿namespace Tally.Company;
 
     partial class CreateCompanyForm
     {

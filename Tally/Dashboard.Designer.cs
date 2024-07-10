@@ -67,6 +67,7 @@
 		selectCompanyButton.TabIndex = 2;
 		selectCompanyButton.Text = "Select Company";
 		selectCompanyButton.UseVisualStyleBackColor = true;
+		selectCompanyButton.Click += selectCompanyButton_ClickAsync;
 		// 
 		// shutCompanyButton
 		// 
@@ -86,7 +87,7 @@
 		createCompanyButton.TabIndex = 4;
 		createCompanyButton.Text = "Create Company";
 		createCompanyButton.UseVisualStyleBackColor = true;
-		createCompanyButton.Click += createCompanyButton_Click;
+		createCompanyButton.Click += createCompanyButton_ClickAsync;
 		// 
 		// alterComapnyButton
 		// 

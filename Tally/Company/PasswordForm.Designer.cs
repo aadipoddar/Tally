@@ -30,7 +30,7 @@ partial class PasswordForm
 	{
 		passwordTextBox = new TextBox();
 		enterPasswordLabel = new Label();
-		goButton = new Button();
+		okButton = new Button();
 		SuspendLayout();
 		// 
 		// passwordTextBox
@@ -51,22 +51,23 @@ partial class PasswordForm
 		enterPasswordLabel.TabIndex = 1;
 		enterPasswordLabel.Text = "Enter Password";
 		// 
-		// goButton
+		// okButton
 		// 
-		goButton.Location = new Point(272, 114);
-		goButton.Name = "goButton";
-		goButton.Size = new Size(100, 35);
-		goButton.TabIndex = 2;
-		goButton.Text = "GO";
-		goButton.UseVisualStyleBackColor = true;
-		goButton.Click += goButton_ClickAsync;
+		okButton.DialogResult = DialogResult.OK;
+		okButton.Location = new Point(272, 114);
+		okButton.Name = "okButton";
+		okButton.Size = new Size(100, 35);
+		okButton.TabIndex = 2;
+		okButton.Text = "OK";
+		okButton.UseVisualStyleBackColor = true;
+		okButton.Click += okButton_Click;
 		// 
 		// PasswordForm
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(384, 161);
-		Controls.Add(goButton);
+		Controls.Add(okButton);
 		Controls.Add(enterPasswordLabel);
 		Controls.Add(passwordTextBox);
 		Name = "PasswordForm";
@@ -80,5 +81,5 @@ partial class PasswordForm
 
 	private TextBox passwordTextBox;
 	private Label enterPasswordLabel;
-	private Button goButton;
+	private Button okButton;
 }

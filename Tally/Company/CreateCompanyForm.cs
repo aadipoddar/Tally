@@ -7,14 +7,12 @@ public partial class CreateCompanyForm : Form
 {
 	CompanyModel companyModel = new();
 	CompanyData companyData = new();
-	Dashboard dashboard = new();
 	public String oldCompanyName;
 
 	public CreateCompanyForm(Dashboard dashboard)
 	{
 		InitializeComponent();
 
-		this.dashboard = dashboard;
 		oldCompanyName = companyNameTextBox.Text;
 	}
 
@@ -74,7 +72,6 @@ public partial class CreateCompanyForm : Form
 				await companyData.UpdateCompanyDetails(companyModel, oldCompanyName);
 		}
 
-		await dashboard.RefreshCompanyList();
 		Close();
 	}
 }

@@ -1,4 +1,5 @@
 using Tally.Company;
+using Tally.Gateway;
 
 using TallyLibrary.Data;
 using TallyLibrary.Models;
@@ -28,26 +29,8 @@ public partial class Dashboard : Form
 		listOfCompaniesListBox.DataSource = companies;
 	}
 
-	private void createCompanyButton_Click(object sender, EventArgs e)
+	private void ShowAlterForm(CompanyModel companyModel)
 	{
-		CreateCompanyForm createCompany = new(this);
-		createCompany.createCompanyButton.Text = "Create Company";
-		createCompany.ShowDialog();
-	}
-
-	private async void alterComapnyButton_ClickAsync(object sender, EventArgs e)
-	{
-		CompanyData companyData = new();
-		CompanyModel companyModel = new();
-		companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
-
-		if (companyModel.Password != "")
-		{
-			PasswordForm passwordForm = new(companyModel.Password, this);
-			passwordForm.ShowDialog();
-			return;
-		}
-
 		CreateCompanyForm createCompanyForm = new(this);
 
 		createCompanyForm.createCompanyButton.Text = "Alter Company";
@@ -65,21 +48,103 @@ public partial class Dashboard : Form
 		createCompanyForm.ShowDialog();
 	}
 
-	private async void deleteCompanyButton_ClickAsync(object sender, EventArgs e)
-	{
-		CompanyData companyData = new();
-
-		if (listOfCompaniesListBox.SelectedItems.Count == 1)
-			await companyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
-
-		await RefreshCompanyList();
-	}
-
 	private void listOfCompaniesListBox_SelectedIndexChanged(object sender, EventArgs e)
 	{
 		selectCompanyButton.Enabled = true;
 		shutCompanyButton.Enabled = true;
 		alterComapnyButton.Enabled = true;
 		deleteCompanyButton.Enabled = true;
+	}
+
+	private async void createCompanyButton_ClickAsync(object sender, EventArgs e)
+	{
+		CreateCompanyForm createCompany = new(this);
+		createCompany.createCompanyButton.Text = "Create Company";
+		createCompany.ShowDialog();
+		await RefreshCompanyList();
+	}
+
+	private async void alterComapnyButton_ClickAsync(object sender, EventArgs e)
+	{
+		if (listOfCompaniesListBox.SelectedItems.Count != 1)
+			MessageBox.Show("Please Select/Create a Company");
+
+		if (listOfCompaniesListBox.SelectedItems.Count == 1)
+		{
+			CompanyData companyData = new();
+			CompanyModel companyModel = new();
+			companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+
+			if (companyModel.Password != "")
+			{
+				PasswordForm passwordForm = new(companyModel.Password);
+				if (passwordForm.ShowDialog() == DialogResult.OK)
+					if (passwordForm.correctPassword)
+						ShowAlterForm(companyModel);
+
+				await RefreshCompanyList();
+				return;
+			}
+
+			ShowAlterForm(companyModel);
+			await RefreshCompanyList();
+		}
+	}
+
+	private async void deleteCompanyButton_ClickAsync(object sender, EventArgs e)
+	{
+		if (listOfCompaniesListBox.SelectedItems.Count != 1)
+			MessageBox.Show("Please Select/Create a Company");
+
+		if (listOfCompaniesListBox.SelectedItems.Count == 1)
+		{
+			CompanyData companyData = new();
+			CompanyModel companyModel = new();
+			companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+
+			if (companyModel.Password != "")
+			{
+				PasswordForm passwordForm = new(companyModel.Password);
+				if (passwordForm.ShowDialog() == DialogResult.OK)
+					if (passwordForm.correctPassword)
+						await companyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
+
+				await RefreshCompanyList();
+				return;
+			}
+
+			await companyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
+			await RefreshCompanyList();
+		}
+	}
+
+	private async void selectCompanyButton_ClickAsync(object sender, EventArgs e)
+	{
+		if (listOfCompaniesListBox.SelectedItems.Count != 1)
+			MessageBox.Show("Please Select/Create a Company");
+
+		if (listOfCompaniesListBox.SelectedItems.Count == 1)
+		{
+			CompanyData companyData = new();
+			CompanyModel companyModel = new();
+			companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+			GatewayDashboard gatewayDashboard = new(companyModel);
+
+			if (companyModel.Password != "")
+			{
+				PasswordForm passwordForm = new(companyModel.Password);
+				if (passwordForm.ShowDialog() == DialogResult.OK)
+					if (passwordForm.correctPassword)
+					{
+						gatewayDashboard.Show();
+						Hide();
+					}
+
+				return;
+			}
+
+			gatewayDashboard.Show();
+			Hide();
+		}
 	}
 }

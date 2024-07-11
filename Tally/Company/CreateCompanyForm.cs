@@ -7,6 +7,7 @@ public partial class CreateCompanyForm : Form
 {
 	CompanyModel companyModel = new();
 	CompanyData companyData = new();
+	DatabaseSetup databaseSetup = new();
 	public String oldCompanyName;
 
 	public CreateCompanyForm(Dashboard dashboard)
@@ -62,7 +63,10 @@ public partial class CreateCompanyForm : Form
 		}
 
 		if (createCompanyButton.Text == "Create Company")
-			await companyData.CreateDatabase(companyModel);
+		{
+			await databaseSetup.CreateDatabase(companyModel.Name);
+			await companyData.InsertIntoTablesAsync(companyModel);
+		}
 
 		if (createCompanyButton.Text == "Alter Company")
 		{

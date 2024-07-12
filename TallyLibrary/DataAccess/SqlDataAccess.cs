@@ -5,37 +5,37 @@ using Dapper;
 
 namespace TallyLibrary.DataAccess;
 
-class SqlDataAccess
+static class SqlDataAccess
 {
-	public string GetConnectionString(string companyName) =>
-		$"Server=AADIKIITLAPI\\SQLEXPRESS;Integrated security=SSPI;database={companyName}";
+	public static string GetConnectionstring(string databaseName) =>
+		$"Server=AADIKIITLAPI\\SQLEXPRESS;Integrated security=SSPI;database={databaseName}";
 
-	public async Task RunSQL(string sql, string companyName)
+	public static async Task RunSQL(string sql, string databaseName)
 	{
-		using IDbConnection connection = new SqlConnection(GetConnectionString(companyName));
+		using IDbConnection connection = new SqlConnection(GetConnectionstring(databaseName));
 
 		await connection.ExecuteAsync(sql);
 	}
 
-	public async Task<IEnumerable<T>> LoadDataSQL<T>(string sql, string companyName)
+	public static async Task<IEnumerable<T>> LoadDataSQL<T>(string sql, string databaseName)
 	{
-		using IDbConnection connection = new SqlConnection(GetConnectionString(companyName));
+		using IDbConnection connection = new SqlConnection(GetConnectionstring(databaseName));
 
 		return await connection.QueryAsync<T>(sql);
 	}
 
-	public async Task<IEnumerable<T>> LoadData<T, U>(string storedProcedure, U parameters, string companyName)
+	public static async Task<IEnumerable<T>> LoadData<T, U>(string storedProcedure, U parameters, string databaseName)
 	{
-		using IDbConnection connection = new SqlConnection(GetConnectionString(companyName));
+		using IDbConnection connection = new SqlConnection(GetConnectionstring(databaseName));
 
 		return await connection.QueryAsync<T>(storedProcedure,
 											  parameters,
 											  commandType: CommandType.StoredProcedure);
 	}
 
-	public async Task SaveData<T>(string storedProcedure, T parameters, string companyName)
+	public static async Task SaveData<T>(string storedProcedure, T parameters, string databaseName)
 	{
-		using IDbConnection connection = new SqlConnection(GetConnectionString(companyName));
+		using IDbConnection connection = new SqlConnection(GetConnectionstring(databaseName));
 
 		await connection.ExecuteAsync(storedProcedure,
 									  parameters,

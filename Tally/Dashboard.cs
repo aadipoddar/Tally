@@ -20,8 +20,7 @@ public partial class Dashboard : Form
 		listOfCompaniesListBox.DataSource = null;
 		listOfCompaniesListBox.Items.Clear();
 
-		CompanyData companyData = new();
-		List<string> companies = (await companyData.GetAllCompanies()).ToList();
+		List<string> companies = (await CompanyData.GetAllCompanies()).ToList();
 
 		for (int i = 0; i < companies.Count; i++)
 			companies[i] = companies[i].Substring(0, companies[i].Length - 5);
@@ -71,9 +70,8 @@ public partial class Dashboard : Form
 
 		if (listOfCompaniesListBox.SelectedItems.Count == 1)
 		{
-			CompanyData companyData = new();
 			CompanyModel companyModel = new();
-			companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 
 			if (companyModel.Password != "")
 			{
@@ -98,22 +96,21 @@ public partial class Dashboard : Form
 
 		if (listOfCompaniesListBox.SelectedItems.Count == 1)
 		{
-			CompanyData companyData = new();
 			CompanyModel companyModel = new();
-			companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 
 			if (companyModel.Password != "")
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
 				if (passwordForm.ShowDialog() == DialogResult.OK)
 					if (passwordForm.correctPassword)
-						await companyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
+						await CompanyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
 
 				await RefreshCompanyList();
 				return;
 			}
 
-			await companyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
+			await CompanyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
 			await RefreshCompanyList();
 		}
 	}
@@ -125,9 +122,8 @@ public partial class Dashboard : Form
 
 		if (listOfCompaniesListBox.SelectedItems.Count == 1)
 		{
-			CompanyData companyData = new();
 			CompanyModel companyModel = new();
-			companyModel = await companyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
+			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 			GatewayDashboard gatewayDashboard = new(companyModel);
 
 			if (companyModel.Password != "")

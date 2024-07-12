@@ -6,9 +6,7 @@ namespace Tally.Company;
 public partial class CreateCompanyForm : Form
 {
 	CompanyModel companyModel = new();
-	CompanyData companyData = new();
-	DatabaseSetup databaseSetup = new();
-	public String oldCompanyName;
+	public string oldCompanyName;
 
 	public CreateCompanyForm(Dashboard dashboard)
 	{
@@ -64,16 +62,16 @@ public partial class CreateCompanyForm : Form
 
 		if (createCompanyButton.Text == "Create Company")
 		{
-			await databaseSetup.CreateDatabase(companyModel.Name);
-			await companyData.InsertIntoTablesAsync(companyModel);
+			await DatabaseSetup.CreateDatabase(companyModel.Name);
+			await CompanyData.InsertIntoTablesAsync(companyModel);
 		}
 
 		if (createCompanyButton.Text == "Alter Company")
 		{
 			if (oldCompanyName != companyNameTextBox.Text)
-				await companyData.UpdateCompanyDetails(companyModel, oldCompanyName, true);
+				await CompanyData.UpdateCompanyDetails(companyModel, oldCompanyName, true);
 			else
-				await companyData.UpdateCompanyDetails(companyModel, oldCompanyName);
+				await CompanyData.UpdateCompanyDetails(companyModel, oldCompanyName);
 		}
 
 		Close();

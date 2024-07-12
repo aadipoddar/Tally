@@ -2,7 +2,7 @@
 
 public partial class PasswordForm : Form
 {
-	String password;
+	string password;
 	public bool correctPassword;
 
 	public PasswordForm(string password)

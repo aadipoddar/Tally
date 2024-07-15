@@ -1,0 +1,13 @@
+﻿INSERT INTO [dbo].[NatureOfGroup]
+VALUES
+	('Assets'), 
+	('Expenses'),
+	('Income'),
+	('Liabilities');
+
+INSERT INTO [dbo].[MethodToAllocate]
+VALUES
+	('Not Applicable'), 
+	('Appropriate by Qty'),
+	('Appropriate by Value'),
+	('No Appropriation');

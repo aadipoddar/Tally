@@ -7,8 +7,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SQLScripts\Company\ChangeDatabaseName.txt" />
+    <None Remove="SQLScripts\Company\DeleteDatabase.txt" />
+    <None Remove="SQLScripts\Company\GetAllCompanies.txt" />
+    <None Remove="SQLScripts\Company\InsertCompanyDetails.txt" />
+    <None Remove="SQLScripts\Company\LoadTableData.txt" />
+    <None Remove="SQLScripts\Company\UpdateCompanyDetails.txt" />
+    <None Remove="SQLScripts\Database\CreateDatabase.txt" />
+    <None Remove="SQLScripts\Database\CreateTables.txt" />
+    <None Remove="SQLScripts\Database\FillData.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SQLScripts\Company\ChangeDatabaseName.txt" />
+    <EmbeddedResource Include="SQLScripts\Company\DeleteDatabase.txt" />
+    <EmbeddedResource Include="SQLScripts\Company\GetAllCompanies.txt" />
+    <EmbeddedResource Include="SQLScripts\Company\InsertCompanyDetails.txt" />
+    <EmbeddedResource Include="SQLScripts\Company\LoadTableData.txt" />
+    <EmbeddedResource Include="SQLScripts\Company\UpdateCompanyDetails.txt" />
+    <EmbeddedResource Include="SQLScripts\Database\CreateDatabase.txt" />
+    <EmbeddedResource Include="SQLScripts\Database\CreateTables.txt" />
+    <EmbeddedResource Include="SQLScripts\Database\FillData.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SQLScripts\Groups\" />
   </ItemGroup>
 
 </Project>

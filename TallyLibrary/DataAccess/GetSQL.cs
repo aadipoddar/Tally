@@ -1,9 +1,17 @@
-﻿namespace TallyLibrary.DataAccess;
+﻿using System.Reflection;
+
+namespace TallyLibrary.DataAccess;
 
 static class GetSQL
 {
-	private static async Task<string> GetSQLContent(string fileName) =>
-		await File.ReadAllTextAsync(@$"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName}\TallyLibrary\SQLScripts\{fileName}.txt");
+	private static async Task<string> GetSQLContent(string fileName)
+	{
+		Assembly assembly = Assembly.GetExecutingAssembly();
+
+		StreamReader stream = new StreamReader(assembly.GetManifestResourceStream($"TallyLibrary.SQLScripts.{fileName}.txt"));
+
+		return await stream.ReadToEndAsync();
+	}
 
 	public static async Task<string> GetSQLContent(string fileName, params string[] parameters)
 	{

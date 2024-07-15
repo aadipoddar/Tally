@@ -99,6 +99,13 @@ public partial class Dashboard : Form
 			CompanyModel companyModel = new();
 			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 
+			if (companyModel == null)
+			{
+				await CompanyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
+				await RefreshCompanyList();
+				return;
+			}
+
 			if (companyModel.Password != "")
 			{
 				PasswordForm passwordForm = new(companyModel.Password);

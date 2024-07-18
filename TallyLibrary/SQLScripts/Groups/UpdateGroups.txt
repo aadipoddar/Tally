@@ -1,0 +1,10 @@
+﻿UPDATE [dbo].[Groups]
+SET [Name] = '@Name@',
+	[Under] = @Under@,
+	[NatureOfGroup] = @NatureOfGroup@,
+	[AffectGrossProfit] = @AffectGrossProfit@,
+	[BehavesSubLedger] = @BehavesSubLedger@, 
+	[NetBalances] = @NetBalances@, 
+	[UsedForCalculation] = @UsedForCalculation@, 
+	[MethodToAllocate] = @MethodToAllocate@
+WHERE [Id] = @param0@

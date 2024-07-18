@@ -29,44 +29,58 @@ partial class GroupsDashboard
 	private void InitializeComponent()
 	{
 		createGroupButton = new Button();
-		displayGroupButton = new Button();
+		deleteGroupButton = new Button();
 		alterGroupButton = new Button();
+		groupsListBox = new ListBox();
 		SuspendLayout();
 		// 
 		// createGroupButton
 		// 
-		createGroupButton.Location = new Point(119, 32);
+		createGroupButton.Location = new Point(393, 49);
 		createGroupButton.Name = "createGroupButton";
 		createGroupButton.Size = new Size(75, 23);
 		createGroupButton.TabIndex = 0;
 		createGroupButton.Text = "Create";
 		createGroupButton.UseVisualStyleBackColor = true;
+		createGroupButton.Click += createGroupButton_Click;
 		// 
-		// displayGroupButton
+		// deleteGroupButton
 		// 
-		displayGroupButton.Location = new Point(119, 61);
-		displayGroupButton.Name = "displayGroupButton";
-		displayGroupButton.Size = new Size(75, 23);
-		displayGroupButton.TabIndex = 1;
-		displayGroupButton.Text = "Display";
-		displayGroupButton.UseVisualStyleBackColor = true;
+		deleteGroupButton.Location = new Point(393, 107);
+		deleteGroupButton.Name = "deleteGroupButton";
+		deleteGroupButton.Size = new Size(75, 23);
+		deleteGroupButton.TabIndex = 1;
+		deleteGroupButton.Text = "Delete";
+		deleteGroupButton.UseVisualStyleBackColor = true;
+		deleteGroupButton.Click += deleteGroupButton_Click;
 		// 
 		// alterGroupButton
 		// 
-		alterGroupButton.Location = new Point(119, 90);
+		alterGroupButton.Location = new Point(393, 78);
 		alterGroupButton.Name = "alterGroupButton";
 		alterGroupButton.Size = new Size(75, 23);
 		alterGroupButton.TabIndex = 2;
 		alterGroupButton.Text = "Alter";
 		alterGroupButton.UseVisualStyleBackColor = true;
+		alterGroupButton.Click += alterGroupButton_Click;
+		// 
+		// groupsListBox
+		// 
+		groupsListBox.FormattingEnabled = true;
+		groupsListBox.ItemHeight = 15;
+		groupsListBox.Location = new Point(12, 12);
+		groupsListBox.Name = "groupsListBox";
+		groupsListBox.Size = new Size(282, 649);
+		groupsListBox.TabIndex = 3;
 		// 
 		// GroupsDashboard
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(346, 450);
+		ClientSize = new Size(531, 683);
+		Controls.Add(groupsListBox);
 		Controls.Add(alterGroupButton);
-		Controls.Add(displayGroupButton);
+		Controls.Add(deleteGroupButton);
 		Controls.Add(createGroupButton);
 		Name = "GroupsDashboard";
 		StartPosition = FormStartPosition.CenterScreen;
@@ -78,6 +92,7 @@ partial class GroupsDashboard
 	#endregion
 
 	private Button createGroupButton;
-	private Button displayGroupButton;
+	private Button deleteGroupButton;
 	private Button alterGroupButton;
+	public ListBox groupsListBox;
 }

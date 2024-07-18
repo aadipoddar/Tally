@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Database1.mdf" />
+    <None Remove="Database1_log.ldf" />
+    <None Remove="SQLScripts\Common\DeleteById.txt" />
     <None Remove="SQLScripts\Company\ChangeDatabaseName.txt" />
     <None Remove="SQLScripts\Company\DeleteDatabase.txt" />
     <None Remove="SQLScripts\Company\GetAllCompanies.txt" />
@@ -16,18 +19,23 @@
     <None Remove="SQLScripts\Database\CreateDatabase.txt" />
     <None Remove="SQLScripts\Database\CreateTables.txt" />
     <None Remove="SQLScripts\Database\FillData.txt" />
+    <None Remove="SQLScripts\Groups\InsertIntoGroups.txt" />
+    <None Remove="SQLScripts\Groups\UpdateGroups.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SQLScripts\Common\DeleteById.txt" />
     <EmbeddedResource Include="SQLScripts\Company\ChangeDatabaseName.txt" />
     <EmbeddedResource Include="SQLScripts\Company\DeleteDatabase.txt" />
     <EmbeddedResource Include="SQLScripts\Company\GetAllCompanies.txt" />
     <EmbeddedResource Include="SQLScripts\Company\InsertCompanyDetails.txt" />
-    <EmbeddedResource Include="SQLScripts\Company\LoadTableData.txt" />
+    <EmbeddedResource Include="SQLScripts\Common\LoadTableData.txt" />
     <EmbeddedResource Include="SQLScripts\Company\UpdateCompanyDetails.txt" />
     <EmbeddedResource Include="SQLScripts\Database\CreateDatabase.txt" />
     <EmbeddedResource Include="SQLScripts\Database\CreateTables.txt" />
     <EmbeddedResource Include="SQLScripts\Database\FillData.txt" />
+    <EmbeddedResource Include="SQLScripts\Groups\InsertIntoGroups.txt" />
+    <EmbeddedResource Include="SQLScripts\Groups\UpdateGroups.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SQLScripts\Groups\" />
+    <Folder Include="Models\Groups\" />
   </ItemGroup>
 
 </Project>

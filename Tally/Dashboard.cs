@@ -20,7 +20,7 @@ public partial class Dashboard : Form
 		listOfCompaniesListBox.DataSource = null;
 		listOfCompaniesListBox.Items.Clear();
 
-		List<string> companies = (await CompanyData.GetAllCompanies()).ToList();
+		var companies = (await CompanyData.GetAllCompanies()).ToList();
 
 		for (int i = 0; i < companies.Count; i++)
 			companies[i] = companies[i].Substring(0, companies[i].Length - 5);
@@ -34,15 +34,15 @@ public partial class Dashboard : Form
 
 		createCompanyForm.createCompanyButton.Text = "Alter Company";
 		createCompanyForm.oldCompanyName = createCompanyForm.companyNameTextBox.Text = companyModel.Name;
-		createCompanyForm.mailingNameTextBox.Text = companyModel.MailingName;
-		createCompanyForm.addressTextBox.Text = companyModel.Address;
-		createCompanyForm.stateTextBox.Text = companyModel.State;
-		createCompanyForm.pinCodeTextBox.Text = companyModel.PinCode.ToString();
-		createCompanyForm.telephoneNumberTextBox.Text = companyModel.TelephoneNumber;
-		createCompanyForm.emailTextBox.Text = companyModel.EMail;
+		createCompanyForm.mailingNameTextBox.Text = companyModel.MailingName == "NULL" ? "" : companyModel.MailingName;
+		createCompanyForm.addressTextBox.Text = companyModel.Address == "NULL" ? "" : companyModel.Address;
+		createCompanyForm.stateTextBox.Text = companyModel.State == "NULL" ? "" : companyModel.State;
+		createCompanyForm.pinCodeTextBox.Text = companyModel.PinCode == 0 ? "" : companyModel.PinCode.ToString();
+		createCompanyForm.telephoneNumberTextBox.Text = companyModel.TelephoneNumber == "NULL" ? "" : companyModel.TelephoneNumber;
+		createCompanyForm.emailTextBox.Text = companyModel.EMail == "NULL" ? "" : companyModel.EMail;
 		createCompanyForm.financialYearFromDateTimePicker.Text = companyModel.FinancialYearFrom.ToString();
 		createCompanyForm.booksBeginFromDateTimePicker.Text = companyModel.BooksBeginFrom.ToString();
-		createCompanyForm.passwordTextBox.Text = companyModel.Password;
+		createCompanyForm.passwordTextBox.Text = companyModel.Password == "NULL" ? "" : companyModel.Password;
 
 		createCompanyForm.ShowDialog();
 	}
@@ -73,7 +73,7 @@ public partial class Dashboard : Form
 			CompanyModel companyModel = new();
 			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 
-			if (companyModel.Password != "")
+			if (companyModel.Password != "NULL")
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
 				if (passwordForm.ShowDialog() == DialogResult.OK)
@@ -106,7 +106,7 @@ public partial class Dashboard : Form
 				return;
 			}
 
-			if (companyModel.Password != "")
+			if (companyModel.Password != "NULL")
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
 				if (passwordForm.ShowDialog() == DialogResult.OK)
@@ -133,7 +133,7 @@ public partial class Dashboard : Form
 			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 			GatewayDashboard gatewayDashboard = new(companyModel);
 
-			if (companyModel.Password != "")
+			if (companyModel.Password != "NULL")
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
 				if (passwordForm.ShowDialog() == DialogResult.OK)

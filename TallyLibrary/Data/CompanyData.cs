@@ -12,9 +12,9 @@ public static class CompanyData
 		await SqlDataAccess.RunSQL(await GetSQL.GetSQLContent("Company.ChangeDatabaseName", oldCompanyName, newCompanyName), "master");
 
 	public static async Task<CompanyModel> LoadCompanyDetails(string companyName) =>
-		(await SqlDataAccess.LoadDataSQL<CompanyModel>(await GetSQL.GetSQLContent("Company.LoadTableData", "CompanyDetails"), $"{companyName}Tally")).FirstOrDefault();
+		(await SqlDataAccess.LoadDataSQL<CompanyModel>(await GetSQL.GetSQLContent("Common.LoadTableData", "CompanyDetails"), $"{companyName}Tally")).FirstOrDefault();
 
-	public static async Task InsertIntoTablesAsync(CompanyModel company) =>
+	public static async Task InsertIntoCompanyTablesAsync(CompanyModel company) =>
 		await SqlDataAccess.RunSQL(await GetSQL.GetSQLContent("Company.InsertCompanyDetails", company), $"{company.Name}Tally");
 
 	public static async Task UpdateCompanyDetails(CompanyModel company, string oldCompanyName, bool companyNameChanged = false)

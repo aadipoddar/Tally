@@ -1,0 +1,3 @@
+﻿DELETE
+FROM [dbo].[@param0@]
+WHERE [Id] = @param1@

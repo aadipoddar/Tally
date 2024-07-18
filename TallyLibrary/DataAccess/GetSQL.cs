@@ -36,7 +36,7 @@ static class GetSQL
 
 				var value = property.GetValue(model);
 
-				string stringValue = value?.ToString();
+				string stringValue = value == null ? "NULL" : value.ToString();
 
 				propertyValues.Add(property.Name, stringValue);
 			}

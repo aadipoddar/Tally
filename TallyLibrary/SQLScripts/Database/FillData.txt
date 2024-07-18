@@ -1,13 +1,46 @@
 ﻿INSERT INTO [dbo].[NatureOfGroup]
 VALUES
-	('Assets'), 
+	('Assets'),
 	('Expenses'),
 	('Income'),
 	('Liabilities');
 
 INSERT INTO [dbo].[MethodToAllocate]
 VALUES
-	('Not Applicable'), 
+	('Not Applicable'),
 	('Appropriate by Qty'),
 	('Appropriate by Value'),
 	('No Appropriation');
+
+
+INSERT INTO [dbo].[Groups]
+VALUES
+	('Primary', 1, NULL, NULL, 0, 0, 0, 1),
+	('Bank Accounts', 7, NULL, NULL, 0, 0, 0, 1),
+	('Bank OCC A/c', 18, NULL, NULL, 0, 0, 0, 1),
+	('Branch / Divisions', 1, 4, NULL, 0, 0, 0, 1),
+	('Capital Account', 1, 4, NULL, 0, 0, 0, 1),
+	('Cash in Hand', 7, NULL, NULL, 0, 0, 0, 1),
+	('Current Assets', 1, 1, NULL, 0, 0, 0, 1),
+	('Current Liabilities', 1, 4, NULL, 0, 0, 0, 1),
+	('Deposits (Asset)', 7, NULL, NULL, 0, 0, 0, 1),
+	('Direct Expenses', 1, 2, 1, 0, 0, 0, 1),
+	('Indirect Expenses', 1, 2, 0, 0, 0, 0, 1),
+	('Direct Incomes', 1, 3, 1, 0, 0, 0, 1),
+	('Indirect Incomes', 1, 3, 0, 0, 0, 0, 1),
+	('Duties & Taxes', 8, NULL, NULL, 0, 0, 0, 1),
+	('Fixed Assets', 1, 1, NULL, 0, 0, 0, 1),
+	('Investments', 1, 1, NULL, 0, 0, 0, 1),
+	('Loans & Advances (Asset)', 7, NULL, NULL, 0, 0, 0, 1),
+	('Loans (Liability)', 1, 4, NULL, 0, 0, 0, 1),
+	('Misc. Expenses (Asset)', 1, 1, NULL, 0, 0, 0, 1),
+	('Provisions', 8, NULL, NULL, 0, 0, 0, 1),
+	('Purhase Accounts', 1, 2, 1, 0, 0, 0, 1),
+	('Reserves & Surplus (Retained Earnings)', 5, NULL, NULL, 0, 0, 0, 1),
+	('Sales Accounts', 1, 3, 1, 0, 0, 0, 1),
+	('Secured Loans', 18, NULL, NULL, 0, 0, 0, 1),
+	('Stock in Hand', 7, NULL, NULL, 0, 0, 0, 1),
+	('Sundry Creditors', 8, NULL, NULL, 1, 0, 0, 1),
+	('Sundry Debtors', 7, NULL, NULL, 1, 0, 0, 1),
+	('Suspense A/c', 1, 4, NULL, 1, 0, 0, 1),
+	('Unsecured Loans', 18, NULL, NULL, 0, 0, 0, 1);

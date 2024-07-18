@@ -1,0 +1,18 @@
+﻿INSERT INTO [dbo].[Groups]
+	([Name],
+	 [Under],
+	 [NatureOfGroup],
+	 [AffectGrossProfit],
+	 [BehavesSubLedger], 
+	 [NetBalances], 
+	 [UsedForCalculation], 
+	 [MethodToAllocate])
+VALUES
+	('@Name@',
+	 @Under@,
+	 @NatureOfGroup@,
+	 @AffectGrossProfit@,
+	 @BehavesSubLedger@,
+	 @NetBalances@,
+	 @UsedForCalculation@,
+	 @MethodToAllocate@)

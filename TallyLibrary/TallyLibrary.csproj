@@ -21,6 +21,11 @@
     <None Remove="SQLScripts\Database\FillData.txt" />
     <None Remove="SQLScripts\Groups\InsertIntoGroups.txt" />
     <None Remove="SQLScripts\Groups\UpdateGroups.txt" />
+    <None Remove="TextFileScripts\OriginalFiles\CompanyDetails.txt" />
+    <None Remove="TextFileScripts\OriginalFiles\Groups.txt" />
+    <None Remove="TextFileScripts\OriginalFiles\MethodToAllocate.txt" />
+    <None Remove="TextFileScripts\OriginalFiles\NatureOfGroup.txt" />
+    <None Remove="TextFileScripts\TableNames.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,15 +41,16 @@
     <EmbeddedResource Include="SQLScripts\Database\FillData.txt" />
     <EmbeddedResource Include="SQLScripts\Groups\InsertIntoGroups.txt" />
     <EmbeddedResource Include="SQLScripts\Groups\UpdateGroups.txt" />
+    <EmbeddedResource Include="TextFileScripts\OriginalFiles\CompanyDetails.txt" />
+    <EmbeddedResource Include="TextFileScripts\OriginalFiles\Groups.txt" />
+    <EmbeddedResource Include="TextFileScripts\OriginalFiles\MethodToAllocate.txt" />
+    <EmbeddedResource Include="TextFileScripts\OriginalFiles\NatureOfGroup.txt" />
+    <EmbeddedResource Include="TextFileScripts\TableNames.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Groups\" />
   </ItemGroup>
 
 </Project>

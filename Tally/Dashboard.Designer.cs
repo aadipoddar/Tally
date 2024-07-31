@@ -31,7 +31,7 @@
 		listOfCompaniesListBox = new ListBox();
 		listOfCompaniesLabel = new Label();
 		selectCompanyButton = new Button();
-		shutCompanyButton = new Button();
+		changeDataLocationButton = new Button();
 		createCompanyButton = new Button();
 		alterComapnyButton = new Button();
 		deleteCompanyButton = new Button();
@@ -63,27 +63,27 @@
 		selectCompanyButton.Enabled = false;
 		selectCompanyButton.Location = new Point(1040, 44);
 		selectCompanyButton.Name = "selectCompanyButton";
-		selectCompanyButton.Size = new Size(110, 23);
+		selectCompanyButton.Size = new Size(163, 23);
 		selectCompanyButton.TabIndex = 2;
 		selectCompanyButton.Text = "Select Company";
 		selectCompanyButton.UseVisualStyleBackColor = true;
 		selectCompanyButton.Click += selectCompanyButton_ClickAsync;
 		// 
-		// shutCompanyButton
+		// changeDataLocationButton
 		// 
-		shutCompanyButton.Enabled = false;
-		shutCompanyButton.Location = new Point(1040, 73);
-		shutCompanyButton.Name = "shutCompanyButton";
-		shutCompanyButton.Size = new Size(110, 23);
-		shutCompanyButton.TabIndex = 3;
-		shutCompanyButton.Text = "Shut Company";
-		shutCompanyButton.UseVisualStyleBackColor = true;
+		changeDataLocationButton.Location = new Point(1040, 160);
+		changeDataLocationButton.Name = "changeDataLocationButton";
+		changeDataLocationButton.Size = new Size(163, 23);
+		changeDataLocationButton.TabIndex = 3;
+		changeDataLocationButton.Text = "Change Data Location";
+		changeDataLocationButton.UseVisualStyleBackColor = true;
+		changeDataLocationButton.Click += changeDataLocationButton_Click;
 		// 
 		// createCompanyButton
 		// 
-		createCompanyButton.Location = new Point(1040, 102);
+		createCompanyButton.Location = new Point(1040, 73);
 		createCompanyButton.Name = "createCompanyButton";
-		createCompanyButton.Size = new Size(110, 23);
+		createCompanyButton.Size = new Size(163, 23);
 		createCompanyButton.TabIndex = 4;
 		createCompanyButton.Text = "Create Company";
 		createCompanyButton.UseVisualStyleBackColor = true;
@@ -92,9 +92,9 @@
 		// alterComapnyButton
 		// 
 		alterComapnyButton.Enabled = false;
-		alterComapnyButton.Location = new Point(1040, 131);
+		alterComapnyButton.Location = new Point(1040, 102);
 		alterComapnyButton.Name = "alterComapnyButton";
-		alterComapnyButton.Size = new Size(110, 23);
+		alterComapnyButton.Size = new Size(163, 23);
 		alterComapnyButton.TabIndex = 5;
 		alterComapnyButton.Text = "Alter Company";
 		alterComapnyButton.UseVisualStyleBackColor = true;
@@ -103,9 +103,9 @@
 		// deleteCompanyButton
 		// 
 		deleteCompanyButton.Enabled = false;
-		deleteCompanyButton.Location = new Point(1040, 160);
+		deleteCompanyButton.Location = new Point(1040, 131);
 		deleteCompanyButton.Name = "deleteCompanyButton";
-		deleteCompanyButton.Size = new Size(110, 23);
+		deleteCompanyButton.Size = new Size(163, 23);
 		deleteCompanyButton.TabIndex = 7;
 		deleteCompanyButton.Text = "Delete Company";
 		deleteCompanyButton.UseVisualStyleBackColor = true;
@@ -119,13 +119,14 @@
 		Controls.Add(deleteCompanyButton);
 		Controls.Add(alterComapnyButton);
 		Controls.Add(createCompanyButton);
-		Controls.Add(shutCompanyButton);
+		Controls.Add(changeDataLocationButton);
 		Controls.Add(selectCompanyButton);
 		Controls.Add(listOfCompaniesLabel);
 		Controls.Add(listOfCompaniesListBox);
 		Name = "Dashboard";
 		StartPosition = FormStartPosition.CenterScreen;
 		Text = "Dashboard";
+		FormClosed += Dashboard_FormClosed;
 		ResumeLayout(false);
 		PerformLayout();
 	}
@@ -133,7 +134,7 @@
 	#endregion
 	private Label listOfCompaniesLabel;
         private Button selectCompanyButton;
-        private Button shutCompanyButton;
+        private Button changeDataLocationButton;
         private Button createCompanyButton;
         private Button alterComapnyButton;
 	public ListBox listOfCompaniesListBox;

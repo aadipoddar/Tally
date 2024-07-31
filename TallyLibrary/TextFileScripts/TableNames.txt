@@ -1,0 +1,4 @@
+﻿CompanyDetails
+MethodToAllocate
+NatureOfGroup
+Groups

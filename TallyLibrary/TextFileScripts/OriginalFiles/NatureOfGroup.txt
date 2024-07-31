@@ -1,0 +1,4 @@
+﻿1,Assets
+2,Expenses
+3,Income
+4,Liabilities

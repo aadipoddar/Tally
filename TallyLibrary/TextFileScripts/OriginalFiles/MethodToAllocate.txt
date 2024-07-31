@@ -1,0 +1,4 @@
+﻿1,Not Applicable
+2,Appropriate by Qty
+3,Appropriate by Value
+4,No Appropriation

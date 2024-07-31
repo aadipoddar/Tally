@@ -2,6 +2,7 @@ using Tally.Company;
 using Tally.Gateway;
 
 using TallyLibrary.Data;
+using TallyLibrary.DataAccess;
 using TallyLibrary.Models;
 
 namespace Tally;
@@ -13,6 +14,12 @@ public partial class Dashboard : Form
 		InitializeComponent();
 
 		Task task = RefreshCompanyList();
+
+		if (!Directory.Exists(DataLocation.GetDataPath()) || (Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User) == null))
+		{
+			ChooseDataLocation chooseDataLocation = new();
+			chooseDataLocation.Show();
+		}
 	}
 
 	public async Task RefreshCompanyList()
@@ -21,9 +28,6 @@ public partial class Dashboard : Form
 		listOfCompaniesListBox.Items.Clear();
 
 		var companies = (await CompanyData.GetAllCompanies()).ToList();
-
-		for (int i = 0; i < companies.Count; i++)
-			companies[i] = companies[i].Substring(0, companies[i].Length - 5);
 
 		listOfCompaniesListBox.DataSource = companies;
 	}
@@ -50,7 +54,6 @@ public partial class Dashboard : Form
 	private void listOfCompaniesListBox_SelectedIndexChanged(object sender, EventArgs e)
 	{
 		selectCompanyButton.Enabled = true;
-		shutCompanyButton.Enabled = true;
 		alterComapnyButton.Enabled = true;
 		deleteCompanyButton.Enabled = true;
 	}
@@ -149,5 +152,17 @@ public partial class Dashboard : Form
 			gatewayDashboard.Show();
 			Hide();
 		}
+	}
+
+	private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+	{
+		Application.Exit();
+	}
+
+	private void changeDataLocationButton_Click(object sender, EventArgs e)
+	{
+		ChooseDataLocation chooseDataLocation = new();
+		chooseDataLocation.Show();
+		Hide();
 	}
 }

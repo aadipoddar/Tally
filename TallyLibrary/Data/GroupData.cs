@@ -1,4 +1,4 @@
-﻿using TallyLibrary.DataAccess;
+﻿using TallyLibrary.DataAccess.SQL;
 using TallyLibrary.Models;
 
 namespace TallyLibrary.Data;

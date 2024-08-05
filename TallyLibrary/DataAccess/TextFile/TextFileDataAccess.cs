@@ -4,6 +4,9 @@ namespace TallyLibrary.DataAccess.TextFile;
 
 public static class TextFileDataAccess
 {
+	public static string GetDataPath() =>
+		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(3);
+
 	public async static Task<string> GetFileContentsTextDataAccess(string fileName)
 	{
 		Assembly assembly = Assembly.GetExecutingAssembly();
@@ -41,12 +44,12 @@ public static class TextFileDataAccess
 
 		line = line.Remove(line.Length - 1);
 
-		await File.AppendAllTextAsync(DataLocation.GetDataPath() + companyName + @$"\{fileName}.txt", line);
+		await File.AppendAllTextAsync(GetDataPath() + companyName + @$"\{fileName}.txt", line);
 	}
 
 	public static async Task<IEnumerable<TModel>> ConvertFileContentToModel<TModel>(string companyName, string fileName) where TModel : new()
 	{
-		var lines = await File.ReadAllLinesAsync(DataLocation.GetDataPath() + companyName + @$"\{fileName}.txt");
+		var lines = await File.ReadAllLinesAsync(GetDataPath() + companyName + @$"\{fileName}.txt");
 
 		List<TModel> output = new();
 
@@ -58,7 +61,7 @@ public static class TextFileDataAccess
 
 	private static async Task<TModel> LookupBy<TModel>(string companyName, string fileName, object variable) where TModel : new()
 	{
-		var lines = await File.ReadAllLinesAsync(DataLocation.GetDataPath() + companyName + @$"\{fileName}.txt");
+		var lines = await File.ReadAllLinesAsync(GetDataPath() + companyName + @$"\{fileName}.txt");
 
 		foreach (string line in lines)
 		{
@@ -95,7 +98,7 @@ public static class TextFileDataAccess
 
 	public static async Task UpdateFileEntry<TModel>(string companyName, string fileName, TModel model, object variable)
 	{
-		var path = DataLocation.GetDataPath() + companyName + @$"\{fileName}.txt";
+		var path = GetDataPath() + companyName + @$"\{fileName}.txt";
 		var lines = await File.ReadAllLinesAsync(path);
 
 		for (int i = 0; i < lines.Length; i++)

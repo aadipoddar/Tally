@@ -1,5 +1,4 @@
 ﻿using TallyLibrary.DataAccess.TextFile;
-using TallyLibrary.DataAccess;
 using TallyLibrary.Models;
 using Microsoft.VisualBasic.FileIO;
 
@@ -9,7 +8,7 @@ public static class CompanyData
 {
 	public static IEnumerable<string> GetAllCompanies()
 	{
-		var applicationDataPath = Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User);
+		var applicationDataPath = TextFileDataAccess.GetDataPath();
 		var directories = Directory.GetDirectories(applicationDataPath).ToList();
 		for (int i = 0; i < directories.Count; i++)
 			directories[i] = directories[i].Substring(applicationDataPath.Length);
@@ -24,7 +23,7 @@ public static class CompanyData
 		await TextFileDataAccess.WriteToFile(company.Name, "CompanyDetails", company);
 
 	private static void ChangeDatabaseName(string newCompanyName, string oldCompanyName) =>
-		FileSystem.RenameDirectory(DataLocation.GetDataPath() + oldCompanyName, newCompanyName);
+		FileSystem.RenameDirectory(TextFileDataAccess.GetDataPath() + oldCompanyName, newCompanyName);
 
 	public static async Task UpdateCompanyDetails(CompanyModel company, string oldCompanyName, bool companyNameChanged = false)
 	{
@@ -34,6 +33,6 @@ public static class CompanyData
 		await TextFileDataAccess.UpdateFileEntry(company.Name, "CompanyDetails", company, oldCompanyName);
 	}
 
-	public static async Task DeleteDatabase(string companyName) =>
-		Directory.Delete(DataLocation.GetDataPath() + companyName, true);
+	public static void DeleteDatabase(string companyName) =>
+		Directory.Delete(TextFileDataAccess.GetDataPath() + companyName, true);
 }

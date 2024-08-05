@@ -51,6 +51,6 @@ public static class CompanyData
 			await SQL.CompanyData.DeleteDatabase(companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.CompanyData.DeleteDatabase(companyName);
+			TextFile.CompanyData.DeleteDatabase(companyName);
 	}
 }

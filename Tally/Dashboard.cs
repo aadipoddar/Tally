@@ -2,7 +2,6 @@ using Tally.Company;
 using Tally.Gateway;
 
 using TallyLibrary.Data;
-using TallyLibrary.DataAccess;
 using TallyLibrary.Models;
 
 namespace Tally;
@@ -15,7 +14,7 @@ public partial class Dashboard : Form
 
 		Task task = RefreshCompanyList();
 
-		if (!Directory.Exists(DataLocation.GetDataPath()) || (Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User) == null))
+		if (Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User) == null)
 		{
 			ChooseDataLocation chooseDataLocation = new();
 			chooseDataLocation.Show();

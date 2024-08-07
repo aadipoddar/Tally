@@ -132,6 +132,8 @@ public partial class CreateGroupForm : Form
 
 	private bool ValidateAndAssign()
 	{
+		groupModel.Id = id;
+
 		if (nameTextBox.Text != string.Empty)
 			groupModel.Name = nameTextBox.Text;
 
@@ -182,7 +184,7 @@ public partial class CreateGroupForm : Form
 	{
 		if (!ValidateAndAssign()) return;
 
-		if (createGroupButton.Text == "Alter Group") await GroupData.UpdateGroupTable(groupModel, id, companyModel.Name);
+		if (createGroupButton.Text == "Alter Group") await GroupData.UpdateGroupTable(groupModel, companyModel.Name);
 
 		else await GroupData.InsertIntoGroupTable(groupModel, companyModel.Name);
 

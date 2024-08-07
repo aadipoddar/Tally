@@ -23,22 +23,4 @@ static class SqlDataAccess
 
 		return await connection.QueryAsync<T>(sql);
 	}
-
-	public static async Task<IEnumerable<T>> LoadData<T, U>(string storedProcedure, U parameters, string databaseName)
-	{
-		using IDbConnection connection = new SqlConnection(GetConnectionstring(databaseName));
-
-		return await connection.QueryAsync<T>(storedProcedure,
-											  parameters,
-											  commandType: CommandType.StoredProcedure);
-	}
-
-	public static async Task SaveData<T>(string storedProcedure, T parameters, string databaseName)
-	{
-		using IDbConnection connection = new SqlConnection(GetConnectionstring(databaseName));
-
-		await connection.ExecuteAsync(storedProcedure,
-									  parameters,
-									  commandType: CommandType.StoredProcedure);
-	}
 }

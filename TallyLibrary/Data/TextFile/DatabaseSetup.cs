@@ -6,7 +6,7 @@ internal static class DatabaseSetup
 {
 	public static async Task CreateDatabase(string companyName)
 	{
-		Directory.CreateDirectory(TextFileDataAccess.GetDataPath() + companyName);
+		Directory.CreateDirectory(TextFileDataAccess.GetDataPath(companyName));
 		await CopyOriginalFiles(companyName);
 	}
 
@@ -15,6 +15,6 @@ internal static class DatabaseSetup
 		var tables = (await TextFileDataAccess.GetFileContentsTextDataAccess("TableNames")).ToString().Split("\r\n");
 
 		for (int i = 0; i < tables.Length; i++)
-			File.WriteAllText(TextFileDataAccess.GetDataPath() + companyName + $@"\{tables[i]}.txt", (await TextFileDataAccess.GetFileContentsTextDataAccess($"OriginalFiles.{tables[i]}")).ToString());
+			File.WriteAllText(TextFileDataAccess.GetDataPath(companyName, tables[i]), (await TextFileDataAccess.GetFileContentsTextDataAccess($"OriginalFiles.{tables[i]}")).ToString());
 	}
 }

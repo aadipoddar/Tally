@@ -255,7 +255,6 @@ partial class CreateGroupForm
 	#endregion
 	private Label nameLabel;
 	private Label underLabel;
-	private Label natureOfGroupLabel;
 	private Label affectGrossProfitLabel;
 	private Label behavesSubLedgerLabel;
 	private Label netBalanceLabel;
@@ -270,4 +269,5 @@ partial class CreateGroupForm
 	public ComboBox usedForCalculationComboBox;
 	public ComboBox methodToAllocateComboBox;
 	public Button createGroupButton;
+	public Label natureOfGroupLabel;
 }

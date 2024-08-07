@@ -52,7 +52,7 @@ public partial class GroupsDashboard : Form
 		createGroupForm.id = group.Id;
 		createGroupForm.nameTextBox.Text = group.Name.ToString();
 		createGroupForm.underComboBox.SelectedValue = group.Under;
-		createGroupForm.natureOfGroupComboBox.SelectedValue = group.NatureOfGroup == null ? createGroupForm.natureOfGroupComboBox.Visible = false : group.NatureOfGroup;
+		createGroupForm.natureOfGroupComboBox.SelectedValue = group.NatureOfGroup == null ? createGroupForm.natureOfGroupComboBox.Visible = createGroupForm.natureOfGroupLabel.Visible = false : group.NatureOfGroup;
 		createGroupForm.affectGrossProfitComboBox.SelectedValue = group.AffectGrossProfit == null ? createGroupForm.affectGrossProfitComboBox.Visible = false : group.AffectGrossProfit;
 		createGroupForm.behavesSubLedgerComboBox.SelectedValue = group.BehavesSubLedger;
 		createGroupForm.netBalancesComboBox.SelectedValue = group.NetBalances;

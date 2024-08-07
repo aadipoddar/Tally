@@ -3,7 +3,7 @@ using TallyLibrary.Models;
 
 namespace TallyLibrary.Data.SQL;
 
-public static class CompanyData
+internal static class CompanyData
 {
 	public static async Task<IEnumerable<string>> GetAllCompanies()
 	{

@@ -1,19 +1,45 @@
-﻿using TallyLibrary.DataAccess.SQL;
+﻿using TallyLibrary.DataAccess;
 using TallyLibrary.Models;
 
 namespace TallyLibrary.Data;
 
 public static class GroupData
 {
-	public static async Task<IEnumerable<T>> LoadTableData<T>(string tableName, string companyName) =>
-		await SqlDataAccess.LoadDataSQL<T>(await GetSQL.GetSQLContent("Common.LoadTableData", tableName), $"{companyName}Tally");
+	public static async Task<IEnumerable<T>> LoadTableData<T>(string tableName, string companyName) where T : new()
+	{
+		if (DataLocation.IsDatabase())
+			return await SQL.GroupData.LoadTableData<T>(tableName, companyName);
 
-	public static async Task InsertIntoGroupTable(GroupModel groupModel, string companyName) =>
-		await SqlDataAccess.RunSQL(await GetSQL.GetSQLContent("Groups.InsertIntoGroups", groupModel), $"{companyName}Tally");
+		if (DataLocation.IsTextFile())
+			return await TextFile.GroupData.LoadTableData<T>(tableName, companyName);
 
-	public static async Task UpdateGroupTable(GroupModel groupModel, int id, string companyName) =>
-		await SqlDataAccess.RunSQL(await GetSQL.GetSQLContent("Groups.UpdateGroups", groupModel, id.ToString()), $"{companyName}Tally");
+		return default;
+	}
 
-	public static async Task DeleteGroupById(int id, string companyName) =>
-		await SqlDataAccess.RunSQL(await GetSQL.GetSQLContent("Common.DeleteById", "Groups", id.ToString()), $"{companyName}Tally");
+	public static async Task InsertIntoGroupTable(GroupModel groupModel, string companyName)
+	{
+		if (DataLocation.IsDatabase())
+			await SQL.GroupData.InsertIntoGroupTable(groupModel, companyName);
+
+		if (DataLocation.IsTextFile())
+			await TextFile.GroupData.InsertIntoGroupTable(groupModel, companyName);
+	}
+
+	public static async Task UpdateGroupTable(GroupModel groupModel, string companyName)
+	{
+		if (DataLocation.IsDatabase())
+			await SQL.GroupData.UpdateGroupTable(groupModel, companyName);
+
+		if (DataLocation.IsTextFile())
+			await TextFile.GroupData.UpdateGroupTable(groupModel, companyName);
+	}
+
+	public static async Task DeleteGroupById(int id, string companyName)
+	{
+		if (DataLocation.IsDatabase())
+			await SQL.GroupData.DeleteGroupById(id, companyName);
+
+		if (DataLocation.IsTextFile())
+			await TextFile.GroupData.DeleteGroupById(id, companyName);
+	}
 }

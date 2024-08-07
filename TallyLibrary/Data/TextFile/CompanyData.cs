@@ -6,15 +6,8 @@ namespace TallyLibrary.Data.TextFile;
 
 public static class CompanyData
 {
-	public static IEnumerable<string> GetAllCompanies()
-	{
-		var applicationDataPath = TextFileDataAccess.GetDataPath();
-		var directories = Directory.GetDirectories(applicationDataPath).ToList();
-		for (int i = 0; i < directories.Count; i++)
-			directories[i] = directories[i].Substring(applicationDataPath.Length);
-
-		return directories;
-	}
+	public static IEnumerable<string> GetAllCompanies() =>
+		TextFileDataAccess.GetAllDirectories();
 
 	public static async Task<CompanyModel> LoadCompanyDetails(string companyName) =>
 		(await TextFileDataAccess.ConvertFileContentToModel<CompanyModel>(companyName, "CompanyDetails")).FirstOrDefault();
@@ -23,7 +16,7 @@ public static class CompanyData
 		await TextFileDataAccess.WriteToFile(company.Name, "CompanyDetails", company);
 
 	private static void ChangeDatabaseName(string newCompanyName, string oldCompanyName) =>
-		FileSystem.RenameDirectory(TextFileDataAccess.GetDataPath() + oldCompanyName, newCompanyName);
+		FileSystem.RenameDirectory(TextFileDataAccess.GetDataPath(oldCompanyName), newCompanyName);
 
 	public static async Task UpdateCompanyDetails(CompanyModel company, string oldCompanyName, bool companyNameChanged = false)
 	{
@@ -34,5 +27,5 @@ public static class CompanyData
 	}
 
 	public static void DeleteDatabase(string companyName) =>
-		Directory.Delete(TextFileDataAccess.GetDataPath() + companyName, true);
+		Directory.Delete(TextFileDataAccess.GetDataPath(companyName), true);
 }

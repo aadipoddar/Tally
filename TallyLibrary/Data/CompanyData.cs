@@ -13,6 +13,9 @@ public static class CompanyData
 		if (DataLocation.IsTextFile())
 			return TextFile.CompanyData.GetAllCompanies();
 
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			return await MongoDB.CompanyData.GetAllCompanies();
+
 		return default;
 	}
 
@@ -24,6 +27,9 @@ public static class CompanyData
 		if (DataLocation.IsTextFile())
 			return await TextFile.CompanyData.LoadCompanyDetails(companyName);
 
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			return await MongoDB.CompanyData.LoadCompanyDetails(companyName);
+
 		return default;
 	}
 
@@ -34,6 +40,9 @@ public static class CompanyData
 
 		if (DataLocation.IsTextFile())
 			await TextFile.CompanyData.InsertIntoCompanyTablesAsync(company);
+
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			await MongoDB.CompanyData.InsertIntoCompanyTablesAsync(company);
 	}
 
 	public static async Task UpdateCompanyDetails(CompanyModel company, string oldCompanyName, bool companyNameChanged = false)
@@ -43,6 +52,9 @@ public static class CompanyData
 
 		if (DataLocation.IsTextFile())
 			await TextFile.CompanyData.UpdateCompanyDetails(company, oldCompanyName, companyNameChanged);
+
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			await MongoDB.CompanyData.UpdateCompanyDetails(company, oldCompanyName, companyNameChanged);
 	}
 
 	public static async Task DeleteDatabase(string companyName)
@@ -52,5 +64,8 @@ public static class CompanyData
 
 		if (DataLocation.IsTextFile())
 			TextFile.CompanyData.DeleteDatabase(companyName);
+
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			await MongoDB.CompanyData.DeleteDatabase(companyName);
 	}
 }

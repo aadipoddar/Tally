@@ -75,7 +75,7 @@ public partial class Dashboard : Form
 			CompanyModel companyModel = new();
 			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 
-			if (companyModel.Password != "NULL")
+			if (companyModel.Password != "NULL" && companyModel.Password != null)
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
 				if (passwordForm.ShowDialog() == DialogResult.OK)
@@ -108,7 +108,7 @@ public partial class Dashboard : Form
 				return;
 			}
 
-			if (companyModel.Password != "NULL")
+			if (companyModel.Password != "NULL" && companyModel.Password != null)
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
 				if (passwordForm.ShowDialog() == DialogResult.OK)
@@ -135,7 +135,7 @@ public partial class Dashboard : Form
 			companyModel = await CompanyData.LoadCompanyDetails(listOfCompaniesListBox.SelectedItem?.ToString());
 			GatewayDashboard gatewayDashboard = new(companyModel);
 
-			if (companyModel.Password != "NULL")
+			if (companyModel.Password != "NULL" && companyModel.Password != null)
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
 				if (passwordForm.ShowDialog() == DialogResult.OK)

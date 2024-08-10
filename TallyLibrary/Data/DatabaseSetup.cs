@@ -11,5 +11,8 @@ public static class DatabaseSetup
 
 		if (DataLocation.IsTextFile())
 			await TextFile.DatabaseSetup.CreateDatabase(companyName);
+
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			await MongoDB.DatabaseSetup.CreateDatabase(companyName);
 	}
 }

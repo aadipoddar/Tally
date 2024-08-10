@@ -30,11 +30,13 @@ partial class ChooseDataLocation
 	{
 		textFileButton = new Button();
 		databaseButton = new Button();
+		mongoDBLocal = new Button();
+		mongoDBCloudButton = new Button();
 		SuspendLayout();
 		// 
 		// textFileButton
 		// 
-		textFileButton.Location = new Point(12, 46);
+		textFileButton.Location = new Point(12, 12);
 		textFileButton.Name = "textFileButton";
 		textFileButton.Size = new Size(109, 45);
 		textFileButton.TabIndex = 0;
@@ -44,7 +46,7 @@ partial class ChooseDataLocation
 		// 
 		// databaseButton
 		// 
-		databaseButton.Location = new Point(127, 46);
+		databaseButton.Location = new Point(127, 12);
 		databaseButton.Name = "databaseButton";
 		databaseButton.Size = new Size(117, 45);
 		databaseButton.TabIndex = 1;
@@ -52,11 +54,33 @@ partial class ChooseDataLocation
 		databaseButton.UseVisualStyleBackColor = true;
 		databaseButton.Click += databaseButton_Click;
 		// 
+		// mongoDBLocal
+		// 
+		mongoDBLocal.Location = new Point(127, 63);
+		mongoDBLocal.Name = "mongoDBLocal";
+		mongoDBLocal.Size = new Size(117, 45);
+		mongoDBLocal.TabIndex = 3;
+		mongoDBLocal.Text = "MongoDB Local";
+		mongoDBLocal.UseVisualStyleBackColor = true;
+		mongoDBLocal.Click += mongoDBLocal_Click;
+		// 
+		// mongoDBCloudButton
+		// 
+		mongoDBCloudButton.Location = new Point(12, 63);
+		mongoDBCloudButton.Name = "mongoDBCloudButton";
+		mongoDBCloudButton.Size = new Size(109, 45);
+		mongoDBCloudButton.TabIndex = 2;
+		mongoDBCloudButton.Text = "MongoDB Cloud";
+		mongoDBCloudButton.UseVisualStyleBackColor = true;
+		mongoDBCloudButton.Click += mongoDBCloudButton_Click;
+		// 
 		// ChooseDataLocation
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(256, 150);
+		ClientSize = new Size(256, 123);
+		Controls.Add(mongoDBLocal);
+		Controls.Add(mongoDBCloudButton);
 		Controls.Add(databaseButton);
 		Controls.Add(textFileButton);
 		Name = "ChooseDataLocation";
@@ -70,4 +94,6 @@ partial class ChooseDataLocation
 
 	private Button textFileButton;
 	private Button databaseButton;
+	private Button mongoDBLocal;
+	private Button mongoDBCloudButton;
 }

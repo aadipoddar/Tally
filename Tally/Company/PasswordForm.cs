@@ -2,10 +2,10 @@
 
 public partial class PasswordForm : Form
 {
-	string password;
+	public string password;
 	public bool correctPassword;
 
-	public PasswordForm(string password)
+	public PasswordForm(string password = null)
 	{
 		InitializeComponent();
 
@@ -14,6 +14,9 @@ public partial class PasswordForm : Form
 
 	private void okButton_Click(object sender, EventArgs e)
 	{
+		if (password == null)
+			password = passwordTextBox.Text;
+
 		if (passwordTextBox.Text == password)
 			correctPassword = true;
 

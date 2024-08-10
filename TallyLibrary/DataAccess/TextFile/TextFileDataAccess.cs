@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace TallyLibrary.DataAccess.TextFile;
 
@@ -92,7 +91,7 @@ public static class TextFileDataAccess
 		return output;
 	}
 
-	private static TModel ConvertLineToModel<TModel>(string line) where TModel : new()
+	public static TModel ConvertLineToModel<TModel>(string line) where TModel : new()
 	{
 		string[] cols = line.Split(',');
 		TModel model = new();

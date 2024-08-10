@@ -10,6 +10,12 @@ public static class DataLocation
 	public static bool IsTextFile() =>
 		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0,2) == "TF";
 
+	public static bool IsMongoDBCloud() =>
+		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0,2) == "MC";
+
+	public static bool IsMongoDBLocal() =>
+		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0, 2) == "ML";
+
 	public static string GetTextFileDataPath() =>
 		$@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\TallyAadi\";
 

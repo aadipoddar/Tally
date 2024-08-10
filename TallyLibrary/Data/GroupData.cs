@@ -13,6 +13,9 @@ public static class GroupData
 		if (DataLocation.IsTextFile())
 			return await TextFile.GroupData.LoadTableData<T>(tableName, companyName);
 
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			return await MongoDB.GroupData.LoadTableData<T>(tableName, companyName);
+
 		return default;
 	}
 
@@ -23,6 +26,9 @@ public static class GroupData
 
 		if (DataLocation.IsTextFile())
 			await TextFile.GroupData.InsertIntoGroupTable(groupModel, companyName);
+
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			await MongoDB.GroupData.InsertIntoGroupTable(groupModel, companyName);
 	}
 
 	public static async Task UpdateGroupTable(GroupModel groupModel, string companyName)
@@ -32,6 +38,9 @@ public static class GroupData
 
 		if (DataLocation.IsTextFile())
 			await TextFile.GroupData.UpdateGroupTable(groupModel, companyName);
+
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			await MongoDB.GroupData.UpdateGroupTable(groupModel, companyName);
 	}
 
 	public static async Task DeleteGroupById(int id, string companyName)
@@ -41,5 +50,8 @@ public static class GroupData
 
 		if (DataLocation.IsTextFile())
 			await TextFile.GroupData.DeleteGroupById(id, companyName);
+
+		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
+			await MongoDB.GroupData.DeleteGroupById(id, companyName);
 	}
 }

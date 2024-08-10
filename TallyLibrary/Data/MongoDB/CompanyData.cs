@@ -14,6 +14,7 @@ internal static class CompanyData
 
 		if (DataAccess.DataLocation.IsMongoDBLocal())
 			allCompanies.RemoveRange(0,3);
+
 		return allCompanies;
 	}
 

@@ -215,9 +215,9 @@ partial class CreateGroupForm
 		// 
 		// createGroupButton
 		// 
-		createGroupButton.Location = new Point(175, 373);
+		createGroupButton.Location = new Point(162, 373);
 		createGroupButton.Name = "createGroupButton";
-		createGroupButton.Size = new Size(132, 39);
+		createGroupButton.Size = new Size(165, 52);
 		createGroupButton.TabIndex = 24;
 		createGroupButton.Text = "Create Group";
 		createGroupButton.UseVisualStyleBackColor = true;

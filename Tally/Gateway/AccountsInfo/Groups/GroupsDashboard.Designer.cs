@@ -36,9 +36,9 @@ partial class GroupsDashboard
 		// 
 		// createGroupButton
 		// 
-		createGroupButton.Location = new Point(393, 49);
+		createGroupButton.Location = new Point(319, 12);
 		createGroupButton.Name = "createGroupButton";
-		createGroupButton.Size = new Size(75, 23);
+		createGroupButton.Size = new Size(200, 75);
 		createGroupButton.TabIndex = 0;
 		createGroupButton.Text = "Create";
 		createGroupButton.UseVisualStyleBackColor = true;
@@ -46,9 +46,9 @@ partial class GroupsDashboard
 		// 
 		// deleteGroupButton
 		// 
-		deleteGroupButton.Location = new Point(393, 107);
+		deleteGroupButton.Location = new Point(319, 174);
 		deleteGroupButton.Name = "deleteGroupButton";
-		deleteGroupButton.Size = new Size(75, 23);
+		deleteGroupButton.Size = new Size(200, 75);
 		deleteGroupButton.TabIndex = 1;
 		deleteGroupButton.Text = "Delete";
 		deleteGroupButton.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@ partial class GroupsDashboard
 		// 
 		// alterGroupButton
 		// 
-		alterGroupButton.Location = new Point(393, 78);
+		alterGroupButton.Location = new Point(319, 93);
 		alterGroupButton.Name = "alterGroupButton";
-		alterGroupButton.Size = new Size(75, 23);
+		alterGroupButton.Size = new Size(200, 75);
 		alterGroupButton.TabIndex = 2;
 		alterGroupButton.Text = "Alter";
 		alterGroupButton.UseVisualStyleBackColor = true;

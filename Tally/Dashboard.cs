@@ -2,6 +2,7 @@ using Tally.Company;
 using Tally.Gateway;
 
 using TallyLibrary.Data;
+using TallyLibrary.DataAccess;
 using TallyLibrary.Models;
 
 namespace Tally;
@@ -19,6 +20,8 @@ public partial class Dashboard : Form
 			ChooseDataLocation chooseDataLocation = new();
 			chooseDataLocation.Show();
 		}
+
+		dataLocationLabel.Text = DataLocation.GetDataLocation();
 	}
 
 	public async Task RefreshCompanyList()

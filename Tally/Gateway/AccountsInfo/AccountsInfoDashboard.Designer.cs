@@ -33,9 +33,9 @@ partial class AccountsInfoDashboard
 		// 
 		// groupsButton
 		// 
-		groupsButton.Location = new Point(100, 34);
+		groupsButton.Location = new Point(12, 12);
 		groupsButton.Name = "groupsButton";
-		groupsButton.Size = new Size(75, 23);
+		groupsButton.Size = new Size(200, 75);
 		groupsButton.TabIndex = 0;
 		groupsButton.Text = "Groups";
 		groupsButton.UseVisualStyleBackColor = true;
@@ -45,7 +45,7 @@ partial class AccountsInfoDashboard
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(297, 450);
+		ClientSize = new Size(234, 411);
 		Controls.Add(groupsButton);
 		Name = "AccountsInfoDashboard";
 		StartPosition = FormStartPosition.CenterScreen;

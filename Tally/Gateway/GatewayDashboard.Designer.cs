@@ -33,9 +33,9 @@ partial class GatewayDashboard
 		// 
 		// accountsInfoButton
 		// 
-		accountsInfoButton.Location = new Point(90, 29);
+		accountsInfoButton.Location = new Point(12, 12);
 		accountsInfoButton.Name = "accountsInfoButton";
-		accountsInfoButton.Size = new Size(120, 23);
+		accountsInfoButton.Size = new Size(200, 75);
 		accountsInfoButton.TabIndex = 0;
 		accountsInfoButton.Text = "Accounts Info";
 		accountsInfoButton.UseVisualStyleBackColor = true;
@@ -45,7 +45,7 @@ partial class GatewayDashboard
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(339, 450);
+		ClientSize = new Size(234, 411);
 		Controls.Add(accountsInfoButton);
 		Name = "GatewayDashboard";
 		StartPosition = FormStartPosition.CenterScreen;

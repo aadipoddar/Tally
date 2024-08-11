@@ -5,16 +5,25 @@ namespace TallyLibrary.DataAccess;
 public static class DataLocation
 {
 	public static bool IsDatabase() =>
-		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0,2) == "DB";
+		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0, 2) == "DB";
 
 	public static bool IsTextFile() =>
-		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0,2) == "TF";
+		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0, 2) == "TF";
 
 	public static bool IsMongoDBCloud() =>
-		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0,2) == "MC";
+		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0, 2) == "MC";
 
 	public static bool IsMongoDBLocal() =>
 		Environment.GetEnvironmentVariable("TallyAadi", EnvironmentVariableTarget.User).Substring(0, 2) == "ML";
+
+	public static string GetDataLocation()
+	{
+		if (IsDatabase()) return "MSSQL DataBase";
+		else if (IsTextFile()) return "Text File";
+		else if (IsMongoDBCloud()) return "Mongo DB Cloud";
+		else if (IsMongoDBLocal()) return "Mongo DB Local";
+		return "";
+	}
 
 	public static string GetTextFileDataPath() =>
 		$@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\TallyAadi\";

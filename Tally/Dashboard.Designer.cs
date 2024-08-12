@@ -33,7 +33,7 @@
 		selectCompanyButton = new Button();
 		changeDataLocationButton = new Button();
 		createCompanyButton = new Button();
-		alterComapnyButton = new Button();
+		alterComapanyButton = new Button();
 		deleteCompanyButton = new Button();
 		dataLocationLabel = new Label();
 		SuspendLayout();
@@ -92,14 +92,14 @@
 		// 
 		// alterComapnyButton
 		// 
-		alterComapnyButton.Enabled = false;
-		alterComapnyButton.Location = new Point(729, 206);
-		alterComapnyButton.Name = "alterComapnyButton";
-		alterComapnyButton.Size = new Size(200, 75);
-		alterComapnyButton.TabIndex = 5;
-		alterComapnyButton.Text = "Alter Company";
-		alterComapnyButton.UseVisualStyleBackColor = true;
-		alterComapnyButton.Click += alterComapnyButton_ClickAsync;
+		alterComapanyButton.Enabled = false;
+		alterComapanyButton.Location = new Point(729, 206);
+		alterComapanyButton.Name = "alterComapnyButton";
+		alterComapanyButton.Size = new Size(200, 75);
+		alterComapanyButton.TabIndex = 5;
+		alterComapanyButton.Text = "Alter Company";
+		alterComapanyButton.UseVisualStyleBackColor = true;
+		alterComapanyButton.Click += alterComapnyButton_ClickAsync;
 		// 
 		// deleteCompanyButton
 		// 
@@ -129,7 +129,7 @@
 		ClientSize = new Size(971, 834);
 		Controls.Add(dataLocationLabel);
 		Controls.Add(deleteCompanyButton);
-		Controls.Add(alterComapnyButton);
+		Controls.Add(alterComapanyButton);
 		Controls.Add(createCompanyButton);
 		Controls.Add(changeDataLocationButton);
 		Controls.Add(selectCompanyButton);
@@ -148,7 +148,7 @@
         private Button selectCompanyButton;
         private Button changeDataLocationButton;
         private Button createCompanyButton;
-        private Button alterComapnyButton;
+        private Button alterComapanyButton;
 	public ListBox listOfCompaniesListBox;
 	private Button deleteCompanyButton;
 	private Label dataLocationLabel;

@@ -1,13 +1,16 @@
-using Tally.Company;
-using Tally.Gateway;
-
-using TallyLibrary.Data;
+﻿using TallyLibrary.Data;
 using TallyLibrary.DataAccess;
 using TallyLibrary.Models;
 
-namespace Tally;
+using TallyWPF.Company;
+using TallyWPF.Gateway;
 
-public partial class Dashboard : Form
+namespace TallyWPF;
+
+/// <summary>
+/// Interaction logic for Dashboard.xaml
+/// </summary>
+public partial class Dashboard : Window
 {
 	public Dashboard()
 	{
@@ -21,24 +24,51 @@ public partial class Dashboard : Form
 			chooseDataLocation.Show();
 		}
 
-		dataLocationLabel.Text = DataLocation.GetDataLocation();
+		dataLocationLabel.Content = DataLocation.GetDataLocation();
 	}
 
 	public async Task RefreshCompanyList()
 	{
-		listOfCompaniesListBox.DataSource = null;
+		listOfCompaniesListBox.ItemsSource = null;
 		listOfCompaniesListBox.Items.Clear();
 
 		var companies = (await CompanyData.GetAllCompanies()).ToList();
 
-		listOfCompaniesListBox.DataSource = companies;
+		listOfCompaniesListBox.ItemsSource = companies;
+	}
+
+	private void listOfCompaniesListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+	{
+		selectCompanyButton.IsEnabled = true;
+		alterCompanyButton.IsEnabled = true;
+		deleteCompanyButton.IsEnabled = true;
+	}
+
+	private void Window_Closed(object sender, EventArgs e)
+	{
+		Application.Current.Shutdown();
+	}
+
+	private void changeDataLocationButton_Click(object sender, RoutedEventArgs e)
+	{
+		ChooseDataLocation chooseDataLocation = new();
+		chooseDataLocation.Show();
+		Hide();
+	}
+
+	private async void createCompanyButton_Click(object sender, RoutedEventArgs e)
+	{
+		CreateCompanyForm createCompany = new(this);
+		createCompany.createCompanyButton.Content = "Create Company";
+		createCompany.ShowDialog();
+		await RefreshCompanyList();
 	}
 
 	private void ShowAlterForm(CompanyModel companyModel)
 	{
 		CreateCompanyForm createCompanyForm = new(this);
 
-		createCompanyForm.createCompanyButton.Text = "Alter Company";
+		createCompanyForm.createCompanyButton.Content = "Alter Company";
 		createCompanyForm.oldCompanyName = createCompanyForm.companyNameTextBox.Text = companyModel.Name;
 		createCompanyForm.mailingNameTextBox.Text = companyModel.MailingName == "NULL" ? "" : companyModel.MailingName;
 		createCompanyForm.addressTextBox.Text = companyModel.Address == "NULL" ? "" : companyModel.Address;
@@ -46,29 +76,14 @@ public partial class Dashboard : Form
 		createCompanyForm.pinCodeTextBox.Text = companyModel.PinCode == 0 ? "" : companyModel.PinCode.ToString();
 		createCompanyForm.telephoneNumberTextBox.Text = companyModel.TelephoneNumber == "NULL" ? "" : companyModel.TelephoneNumber;
 		createCompanyForm.emailTextBox.Text = companyModel.EMail == "NULL" ? "" : companyModel.EMail;
-		createCompanyForm.financialYearFromDateTimePicker.Text = companyModel.FinancialYearFrom.ToString();
-		createCompanyForm.booksBeginFromDateTimePicker.Text = companyModel.BooksBeginFrom.ToString();
-		createCompanyForm.passwordTextBox.Text = companyModel.Password == "NULL" ? "" : companyModel.Password;
+		createCompanyForm.financialYearFromDatePicker.Text = companyModel.FinancialYearFrom.ToString();
+		createCompanyForm.booksBeginFromDatePicker.Text = companyModel.BooksBeginFrom.ToString();
+		createCompanyForm.passwordTextBox.Password = companyModel.Password == "NULL" ? "" : companyModel.Password;
 
 		createCompanyForm.ShowDialog();
 	}
 
-	private void listOfCompaniesListBox_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		selectCompanyButton.Enabled = true;
-		alterComapanyButton.Enabled = true;
-		deleteCompanyButton.Enabled = true;
-	}
-
-	private async void createCompanyButton_ClickAsync(object sender, EventArgs e)
-	{
-		CreateCompanyForm createCompany = new(this);
-		createCompany.createCompanyButton.Text = "Create Company";
-		createCompany.ShowDialog();
-		await RefreshCompanyList();
-	}
-
-	private async void alterComapnyButton_ClickAsync(object sender, EventArgs e)
+	private async void alterCompanyButton_Click(object sender, RoutedEventArgs e)
 	{
 		if (listOfCompaniesListBox.SelectedItems.Count != 1)
 			MessageBox.Show("Please Select/Create a Company");
@@ -81,9 +96,9 @@ public partial class Dashboard : Form
 			if (companyModel.Password != "NULL" && companyModel.Password != null)
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
-				if (passwordForm.ShowDialog() == DialogResult.OK)
-					if (passwordForm.correctPassword)
-						ShowAlterForm(companyModel);
+				passwordForm.ShowDialog();
+				if (passwordForm.correctPassword)
+					ShowAlterForm(companyModel);
 
 				await RefreshCompanyList();
 				return;
@@ -94,7 +109,7 @@ public partial class Dashboard : Form
 		}
 	}
 
-	private async void deleteCompanyButton_ClickAsync(object sender, EventArgs e)
+	private async void deleteCompanyButton_Click(object sender, RoutedEventArgs e)
 	{
 		if (listOfCompaniesListBox.SelectedItems.Count != 1)
 			MessageBox.Show("Please Select/Create a Company");
@@ -114,9 +129,9 @@ public partial class Dashboard : Form
 			if (companyModel.Password != "NULL" && companyModel.Password != null)
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
-				if (passwordForm.ShowDialog() == DialogResult.OK)
-					if (passwordForm.correctPassword)
-						await CompanyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
+				passwordForm.ShowDialog();
+				if (passwordForm.correctPassword)
+					await CompanyData.DeleteDatabase(listOfCompaniesListBox.SelectedItem?.ToString());
 
 				await RefreshCompanyList();
 				return;
@@ -127,7 +142,7 @@ public partial class Dashboard : Form
 		}
 	}
 
-	private async void selectCompanyButton_ClickAsync(object sender, EventArgs e)
+	private async void selectCompanyButton_Click(object sender, RoutedEventArgs e)
 	{
 		if (listOfCompaniesListBox.SelectedItems.Count != 1)
 			MessageBox.Show("Please Select/Create a Company");
@@ -141,12 +156,12 @@ public partial class Dashboard : Form
 			if (companyModel.Password != "NULL" && companyModel.Password != null)
 			{
 				PasswordForm passwordForm = new(companyModel.Password);
-				if (passwordForm.ShowDialog() == DialogResult.OK)
-					if (passwordForm.correctPassword)
-					{
-						gatewayDashboard.Show();
-						Hide();
-					}
+				passwordForm.ShowDialog();
+				if (passwordForm.correctPassword)
+				{
+					gatewayDashboard.Show();
+					Hide();
+				}
 
 				return;
 			}
@@ -154,17 +169,5 @@ public partial class Dashboard : Form
 			gatewayDashboard.Show();
 			Hide();
 		}
-	}
-
-	private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
-	{
-		Application.Exit();
-	}
-
-	private void changeDataLocationButton_Click(object sender, EventArgs e)
-	{
-		ChooseDataLocation chooseDataLocation = new();
-		chooseDataLocation.Show();
-		Hide();
 	}
 }

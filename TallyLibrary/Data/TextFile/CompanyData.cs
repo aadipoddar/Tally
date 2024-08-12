@@ -4,7 +4,7 @@ using Microsoft.VisualBasic.FileIO;
 
 namespace TallyLibrary.Data.TextFile;
 
-public static class CompanyData
+internal static class CompanyData
 {
 	public static IEnumerable<string> GetAllCompanies() =>
 		TextFileDataAccess.GetAllDirectories();

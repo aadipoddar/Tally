@@ -1,0 +1,17 @@
+﻿<Window x:Class="TallyWPF.ChooseDataLocation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TallyWPF"
+        mc:Ignorable="d"
+        Title="ChooseDataLocation" Height="250" Width="200" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+	<Grid>
+		<StackPanel HorizontalAlignment="Center">
+			<Button Name="textFileButton" FontSize="18"  Margin="0,10,0,10" Content="Text File" Click="textFileButton_Click"/>
+			<Button Name="databaseButton" FontSize="18" Margin="0,10,0,10" Content="MSSQL Database" Click="databaseButton_Click"/>
+			<Button Name="mongoDBCloudButton" FontSize="18" Margin="0,10,0,10" Content="MongoDB Cloud" Click="mongoDBCloudButton_Click"/>
+			<Button Name="mongoDBLocalButton" FontSize="18" Margin="0,10,0,10" Content="MongoDB Local" Click="mongoDBLocalButton_Click"/>
+		</StackPanel>
+	</Grid>
+</Window>

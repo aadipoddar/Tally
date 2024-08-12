@@ -1,0 +1,18 @@
+﻿<Window x:Class="TallyWPF.Gateway.AccountsInfo.AccountsInfoDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TallyWPF.Gateway.AccountsInfo"
+        mc:Ignorable="d"
+        Title="AccountsInfoDashboard" Height="400" Width="300"
+		Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<Button x:Name="groupsButton" Content="Groups" Grid.Row="0" Height="50" Margin="10" IsDefault="True" Click="groupsButton_Click" />
+	</Grid>
+</Window>

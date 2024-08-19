@@ -1,1 +1,3 @@
-﻿SELECT name FROM sys.databases WHERE name LIKE '%Tally'
+﻿SELECT name
+FROM sys.databases
+WHERE name LIKE '%Tally'

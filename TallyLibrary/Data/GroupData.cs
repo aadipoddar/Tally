@@ -5,6 +5,14 @@ namespace TallyLibrary.Data;
 
 public static class GroupData
 {
+	public static async Task<GroupModel> GetGroupById(string companyName, int id)
+	{
+		if (DataLocation.IsDatabase())
+			return await SQL.GroupData.GetGroupById(companyName, id);
+
+		return default;
+	}
+
 	public static async Task<IEnumerable<T>> LoadTableData<T>(string tableName, string companyName) where T : new()
 	{
 		if (DataLocation.IsDatabase())

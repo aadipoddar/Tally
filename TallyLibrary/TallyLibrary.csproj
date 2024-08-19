@@ -10,19 +10,18 @@
     <None Remove="Database1.mdf" />
     <None Remove="Database1_log.ldf" />
     <None Remove="SQLScripts\Common\DeleteById.txt" />
+    <None Remove="SQLScripts\Common\GetById.txt" />
     <None Remove="SQLScripts\Company\ChangeDatabaseName.txt" />
     <None Remove="SQLScripts\Company\DeleteDatabase.txt" />
     <None Remove="SQLScripts\Company\GetAllCompanies.txt" />
-    <None Remove="SQLScripts\Company\InsertCompanyDetails.txt" />
     <None Remove="SQLScripts\Company\LoadTableData.txt" />
-    <None Remove="SQLScripts\Company\UpdateCompanyDetails.txt" />
     <None Remove="SQLScripts\Database\CreateDatabase.txt" />
     <None Remove="SQLScripts\Database\CreateTables.txt" />
     <None Remove="SQLScripts\Database\FillData.txt" />
-    <None Remove="SQLScripts\Groups\InsertIntoGroups.txt" />
-    <None Remove="SQLScripts\Groups\UpdateGroups.txt" />
     <None Remove="TextFileScripts\OriginalFiles\CompanyDetails.txt" />
     <None Remove="TextFileScripts\OriginalFiles\Groups.txt" />
+    <None Remove="TextFileScripts\OriginalFiles\Ledgers.txt" />
+    <None Remove="TextFileScripts\OriginalFiles\MethodOfCalculation.txt" />
     <None Remove="TextFileScripts\OriginalFiles\MethodToAllocate.txt" />
     <None Remove="TextFileScripts\OriginalFiles\NatureOfGroup.txt" />
     <None Remove="TextFileScripts\TableNames.txt" />
@@ -30,19 +29,18 @@
 
   <ItemGroup>
     <EmbeddedResource Include="SQLScripts\Common\DeleteById.txt" />
+    <EmbeddedResource Include="SQLScripts\Common\GetById.txt" />
     <EmbeddedResource Include="SQLScripts\Company\ChangeDatabaseName.txt" />
     <EmbeddedResource Include="SQLScripts\Company\DeleteDatabase.txt" />
     <EmbeddedResource Include="SQLScripts\Company\GetAllCompanies.txt" />
-    <EmbeddedResource Include="SQLScripts\Company\InsertCompanyDetails.txt" />
     <EmbeddedResource Include="SQLScripts\Common\LoadTableData.txt" />
-    <EmbeddedResource Include="SQLScripts\Company\UpdateCompanyDetails.txt" />
     <EmbeddedResource Include="SQLScripts\Database\CreateDatabase.txt" />
     <EmbeddedResource Include="SQLScripts\Database\CreateTables.txt" />
     <EmbeddedResource Include="SQLScripts\Database\FillData.txt" />
-    <EmbeddedResource Include="SQLScripts\Groups\InsertIntoGroups.txt" />
-    <EmbeddedResource Include="SQLScripts\Groups\UpdateGroups.txt" />
     <EmbeddedResource Include="TextFileScripts\OriginalFiles\CompanyDetails.txt" />
     <EmbeddedResource Include="TextFileScripts\OriginalFiles\Groups.txt" />
+    <EmbeddedResource Include="TextFileScripts\OriginalFiles\Ledgers.txt" />
+    <EmbeddedResource Include="TextFileScripts\OriginalFiles\MethodOfCalculation.txt" />
     <EmbeddedResource Include="TextFileScripts\OriginalFiles\MethodToAllocate.txt" />
     <EmbeddedResource Include="TextFileScripts\OriginalFiles\NatureOfGroup.txt" />
     <EmbeddedResource Include="TextFileScripts\TableNames.txt" />

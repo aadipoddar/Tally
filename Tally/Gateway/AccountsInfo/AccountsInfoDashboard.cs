@@ -2,6 +2,8 @@
 
 using TallyLibrary.Models;
 
+using TallyWinForms.Gateway.AccountsInfo.Ledgers;
+
 namespace Tally.Gateway.AccountsInfo;
 
 public partial class AccountsInfoDashboard : Form
@@ -26,6 +28,13 @@ public partial class AccountsInfoDashboard : Form
 	{
 		GroupsDashboard groupsDashboard = new(companyModel);
 		groupsDashboard.Show();
+		Hide();
+	}
+
+	private void ledgersButton_Click(object sender, EventArgs e)
+	{
+		LedgersDashboard ledgersDashboard = new(companyModel);
+		ledgersDashboard.Show();
 		Hide();
 	}
 }

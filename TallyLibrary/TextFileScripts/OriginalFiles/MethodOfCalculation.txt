@@ -1,0 +1,4 @@
+﻿1,Additional Duty
+2,On Total Sales
+3,Surcharge on Tax
+4,Tax Based on Item Rate

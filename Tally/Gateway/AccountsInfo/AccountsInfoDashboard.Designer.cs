@@ -29,6 +29,7 @@ partial class AccountsInfoDashboard
 	private void InitializeComponent()
 	{
 		groupsButton = new Button();
+		ledgersButton = new Button();
 		SuspendLayout();
 		// 
 		// groupsButton
@@ -41,11 +42,22 @@ partial class AccountsInfoDashboard
 		groupsButton.UseVisualStyleBackColor = true;
 		groupsButton.Click += groupsButton_Click;
 		// 
+		// ledgersButton
+		// 
+		ledgersButton.Location = new Point(12, 93);
+		ledgersButton.Name = "ledgersButton";
+		ledgersButton.Size = new Size(200, 75);
+		ledgersButton.TabIndex = 1;
+		ledgersButton.Text = "Ledgers";
+		ledgersButton.UseVisualStyleBackColor = true;
+		ledgersButton.Click += ledgersButton_Click;
+		// 
 		// AccountsInfoDashboard
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(234, 411);
+		Controls.Add(ledgersButton);
 		Controls.Add(groupsButton);
 		Name = "AccountsInfoDashboard";
 		StartPosition = FormStartPosition.CenterScreen;
@@ -57,4 +69,5 @@ partial class AccountsInfoDashboard
 	#endregion
 
 	private Button groupsButton;
+	private Button ledgersButton;
 }

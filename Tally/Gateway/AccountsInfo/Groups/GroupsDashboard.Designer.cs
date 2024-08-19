@@ -77,7 +77,7 @@ partial class GroupsDashboard
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(531, 683);
+		ClientSize = new Size(534, 681);
 		Controls.Add(groupsListBox);
 		Controls.Add(alterGroupButton);
 		Controls.Add(deleteGroupButton);

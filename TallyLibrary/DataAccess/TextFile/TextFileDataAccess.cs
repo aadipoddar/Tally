@@ -105,11 +105,11 @@ public static class TextFileDataAccess
 				property.SetValue(model, null);
 			else if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
 				property.SetValue(model, int.Parse(cols[i]));
-			else if (property.PropertyType == typeof(decimal))
+			else if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
 				property.SetValue(model, decimal.Parse(cols[i]));
-			else if (property.PropertyType == typeof(double))
+			else if (property.PropertyType == typeof(double) || property.PropertyType == typeof(double?))
 				property.SetValue(model, double.Parse(cols[i]));
-			else if (property.PropertyType == typeof(DateTime))
+			else if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
 				property.SetValue(model, DateTime.Parse(cols[i]));
 		}
 

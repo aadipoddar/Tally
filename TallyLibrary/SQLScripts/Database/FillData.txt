@@ -44,3 +44,15 @@ VALUES
 	('Sundry Debtors', 7, NULL, NULL, 1, 0, 0, 1),
 	('Suspense A/c', 1, 4, NULL, 1, 0, 0, 1),
 	('Unsecured Loans', 18, NULL, NULL, 0, 0, 0, 1);
+
+INSERT INTO [dbo].[MethodOfCalculation]
+VALUES
+	('Additional Duty'),
+	('On Total Sales'),
+	('Surcharge on Tax'),
+	('Tax Based on Item Rate');
+
+INSERT INTO [dbo].[Ledgers]
+VALUES
+	('Cash', 7, NULL, NULL, NULL, NULL, NULL, NULL),
+	('Profit & Loss A/c', 1, 0, NULL, NULL, NULL, NULL, NULL);

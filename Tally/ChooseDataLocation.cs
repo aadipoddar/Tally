@@ -34,7 +34,7 @@ public partial class ChooseDataLocation : Form
 	{
 		PasswordForm passwordForm = new();
 		if (passwordForm.ShowDialog() == DialogResult.OK)
-			Environment.SetEnvironmentVariable("TallyAadi", $"MC-mongodb+srv://aadi:{passwordForm.password}@tally.tgm1qxl.mongodb.net/?retryWrites=true&w=majority&appName=Tally", EnvironmentVariableTarget.User);
+			Environment.SetEnvironmentVariable("TallyAadi", $"MC-mongodb+srv://aadi:{passwordForm.password}@tally.tgm1qxl.mongodb.net/?retryWrites=true&w=majority&appName=Tally&authSource=admin", EnvironmentVariableTarget.User);
 
 		else return;
 		Dashboard dashboard = new();

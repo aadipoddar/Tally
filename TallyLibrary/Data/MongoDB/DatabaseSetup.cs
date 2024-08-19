@@ -29,6 +29,16 @@ internal static class DatabaseSetup
 				foreach (var line in lines)
 					await MongoDBDataAccess.GetCollection<NatureOfGroupModel>(companyName, tables[i])
 							.InsertOneAsync(TextFileDataAccess.ConvertLineToModel<NatureOfGroupModel>(line));
+
+			else if (tables[i] == "MethodOfCalculation")
+				foreach (var line in lines)
+					await MongoDBDataAccess.GetCollection<MethodOfCalculationModel>(companyName, tables[i])
+							.InsertOneAsync(TextFileDataAccess.ConvertLineToModel<MethodOfCalculationModel>(line));
+
+			else if (tables[i] == "Ledgers")
+				foreach (var line in lines)
+					await MongoDBDataAccess.GetCollection<LedgerModel>(companyName, tables[i])
+							.InsertOneAsync(TextFileDataAccess.ConvertLineToModel<LedgerModel>(line));
 		}
 	}
 }

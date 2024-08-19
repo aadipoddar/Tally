@@ -35,6 +35,27 @@ CREATE TABLE [dbo].[Groups]
 	[NetBalances] BIT NOT NULL,
 	[UsedForCalculation] BIT NOT NULL,
 	[MethodToAllocate] INT NOT NULL,
-	CONSTRAINT [FK_Groups_ToNature] FOREIGN KEY ([NatureOfGroup]) REFERENCES [NatureOfGroup]([Id]),
+	CONSTRAINT [FK_Groups_ToNatureOfGroup] FOREIGN KEY ([NatureOfGroup]) REFERENCES [NatureOfGroup]([Id]),
 	CONSTRAINT [FK_Groups_ToMethodAllocate] FOREIGN KEY ([MethodToAllocate]) REFERENCES [MethodToAllocate]([Id])
+)
+
+CREATE TABLE [dbo].[MethodOfCalculation]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(250) NOT NULL
+)
+
+CREATE TABLE [dbo].[Ledgers]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(250) NOT NULL,
+	[Under] INT NOT NULL,
+	[InventoryAffected] BIT NULL,
+	[MaintainBalances] BIT NULL,
+	[DefaultCreditPeriod] INT NULL,
+	[DateReconciliation] DATE NULL,
+	[PercentageCalculation] decimal(18, 2) NULL,
+	[MethodOfCalculation] INT NULL,
+	CONSTRAINT [FK_Ledgers_ToGroups] FOREIGN KEY ([Under]) REFERENCES [Groups]([Id]),
+	CONSTRAINT [FK_Ledgers_ToMethodOfCalculation] FOREIGN KEY ([MethodOfCalculation]) REFERENCES [MethodOfCalculation]([Id]),
 )

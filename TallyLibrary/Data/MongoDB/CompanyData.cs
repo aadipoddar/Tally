@@ -13,7 +13,17 @@ internal static class CompanyData
 		var allCompanies = (await MongoDBDataAccess.GetMongoDBClient().ListDatabaseNamesAsync()).ToList();
 
 		if (DataAccess.DataLocation.IsMongoDBLocal())
-			allCompanies.RemoveRange(0,3);
+		{
+			allCompanies.Remove("admin");
+			allCompanies.Remove("config");
+			allCompanies.Remove("local");
+		}
+
+		if (DataAccess.DataLocation.IsMongoDBCloud())
+		{
+			allCompanies.Remove("admin");
+			allCompanies.Remove("local");
+		}
 
 		return allCompanies;
 	}

@@ -227,7 +227,7 @@ partial class CreateGroupForm
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(496, 450);
+		ClientSize = new Size(494, 471);
 		Controls.Add(createGroupButton);
 		Controls.Add(methodToAllocateComboBox);
 		Controls.Add(usedForCalculationComboBox);

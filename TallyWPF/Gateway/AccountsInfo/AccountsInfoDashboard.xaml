@@ -10,9 +10,11 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
 		<Button x:Name="groupsButton" Content="Groups" Grid.Row="0" Height="50" Margin="10" IsDefault="True" Click="groupsButton_Click" />
+		<Button x:Name="ledgersButton" Content="Ledgers" Grid.Row="1" Height="50" Margin="10" IsDefault="True" Click="ledgersButton_Click" />
 	</Grid>
 </Window>

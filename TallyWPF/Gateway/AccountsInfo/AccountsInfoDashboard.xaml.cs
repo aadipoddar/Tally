@@ -1,6 +1,7 @@
 ﻿using TallyLibrary.Models;
 
 using TallyWPF.Gateway.AccountsInfo.Groups;
+using TallyWPF.Gateway.AccountsInfo.Ledgers;
 
 namespace TallyWPF.Gateway.AccountsInfo;
 
@@ -30,4 +31,11 @@ public partial class AccountsInfoDashboard : Window
 		gatewayDashboard.Show();
 		Hide();
 	}
+
+	private void ledgersButton_Click(object sender, RoutedEventArgs e)
+	{
+		LedgersDashboard ledgersDashboard = new(companyModel);
+		ledgersDashboard.Show();
+		Hide();
+    }
 }

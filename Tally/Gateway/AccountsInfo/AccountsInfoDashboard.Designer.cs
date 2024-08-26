@@ -30,6 +30,7 @@ partial class AccountsInfoDashboard
 	{
 		groupsButton = new Button();
 		ledgersButton = new Button();
+		voucherTypesButton = new Button();
 		SuspendLayout();
 		// 
 		// groupsButton
@@ -52,11 +53,22 @@ partial class AccountsInfoDashboard
 		ledgersButton.UseVisualStyleBackColor = true;
 		ledgersButton.Click += ledgersButton_Click;
 		// 
+		// voucherTypesButton
+		// 
+		voucherTypesButton.Location = new Point(12, 174);
+		voucherTypesButton.Name = "voucherTypesButton";
+		voucherTypesButton.Size = new Size(200, 75);
+		voucherTypesButton.TabIndex = 2;
+		voucherTypesButton.Text = "Voucher Types";
+		voucherTypesButton.UseVisualStyleBackColor = true;
+		voucherTypesButton.Click += voucherTypesButton_Click;
+		// 
 		// AccountsInfoDashboard
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(234, 411);
+		Controls.Add(voucherTypesButton);
 		Controls.Add(ledgersButton);
 		Controls.Add(groupsButton);
 		Name = "AccountsInfoDashboard";
@@ -70,4 +82,5 @@ partial class AccountsInfoDashboard
 
 	private Button groupsButton;
 	private Button ledgersButton;
+	private Button voucherTypesButton;
 }

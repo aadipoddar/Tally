@@ -4,3 +4,4 @@ NatureOfGroup
 Groups
 MethodOfCalculation
 Ledgers
+VoucherTypes

@@ -1,0 +1,17 @@
+﻿1,Contra,1,0,NULL,0,0,1,0
+2,Credit Note,2,0,NULL,0,0,1,0
+3,Debit Note,3,0,NULL,0,0,1,0
+4,Delivery Note,4,0,NULL,0,0,1,0
+5,Journal,5,0,NULL,0,0,1,0
+6,Memorandum,6,0,NULL,0,0,1,0
+7,Payment,7,0,NULL,0,0,1,0
+8,Physical Stock,8,0,NULL,0,0,1,0
+9,Purchase,9,0,NULL,0,0,1,0
+10,Purchase Order,10,0,NULL,0,0,1,0
+11,Receipt,11,0,NULL,0,0,1,0
+12,Receipt Note,12,0,NULL,0,0,1,0
+13,Rejections Out,13,0,NULL,0,0,1,0
+14,Reversing Journal,14,0,NULL,0,0,1,0
+15,Sales,15,0,NULL,0,0,1,0
+16,Sales Order,16,0,NULL,0,0,1,0
+17,Stock Journal,17,0,NULL,0,0,1,0

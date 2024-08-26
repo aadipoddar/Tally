@@ -39,6 +39,11 @@ internal static class DatabaseSetup
 				foreach (var line in lines)
 					await MongoDBDataAccess.GetCollection<LedgerModel>(companyName, tables[i])
 							.InsertOneAsync(TextFileDataAccess.ConvertLineToModel<LedgerModel>(line));
+
+			else if (tables[i] == "VoucherTypes")
+				foreach (var line in lines)
+					await MongoDBDataAccess.GetCollection<VoucherTypeModel>(companyName, tables[i])
+							.InsertOneAsync(TextFileDataAccess.ConvertLineToModel<VoucherTypeModel>(line));
 		}
 	}
 }

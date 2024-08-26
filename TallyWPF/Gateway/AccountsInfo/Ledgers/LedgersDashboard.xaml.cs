@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-using TallyLibrary.Data;
+﻿using TallyLibrary.Data;
 using TallyLibrary.Models;
 
 namespace TallyWPF.Gateway.AccountsInfo.Ledgers;

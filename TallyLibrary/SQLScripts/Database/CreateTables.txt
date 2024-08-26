@@ -59,3 +59,16 @@ CREATE TABLE [dbo].[Ledgers]
 	CONSTRAINT [FK_Ledgers_ToGroups] FOREIGN KEY ([Under]) REFERENCES [Groups]([Id]),
 	CONSTRAINT [FK_Ledgers_ToMethodOfCalculation] FOREIGN KEY ([MethodOfCalculation]) REFERENCES [MethodOfCalculation]([Id]),
 )
+
+CREATE TABLE [dbo].[VoucherTypes]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(250) NOT NULL,
+	[TypeOfVoucher] INT NOT NULL,
+	[MethodOfNumbering] BIT NULL,
+	[PreventDuplicates] BIT NULL,
+	[UseEffectiveDates] BIT NOT NULL,
+	[DefaultOptional] BIT NOT NULL,
+	[CommonNarration] BIT NOT NULL,
+	[NarrationEachEntry] BIT NOT NULL,
+)

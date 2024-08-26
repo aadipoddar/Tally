@@ -56,3 +56,23 @@ INSERT INTO [dbo].[Ledgers]
 VALUES
 	('Cash', 7, NULL, NULL, NULL, NULL, NULL, NULL),
 	('Profit & Loss A/c', 1, 0, NULL, NULL, NULL, NULL, NULL);
+
+INSERT INTO [dbo].[VoucherTypes]
+VALUES
+	('Contra', 1, 0, NULL, 0, 0, 1, 0),
+	('Credit Note', 2, 0, NULL, 0, 0, 1, 0),
+	('Debit Note', 3, 0, NULL, 0, 0, 1, 0),
+	('Delivery Note', 4, 0, NULL, 0, 0, 1, 0),
+	('Journal', 5, 0, NULL, 0, 0, 1, 0),
+	('Memorandum', 6, 0, NULL, 0, 0, 1, 0),
+	('Payment', 7, 0, NULL, 0, 0, 1, 0),
+	('Physical Stock', 8, 0, NULL, 0, 0, 1, 0),
+	('Purchase', 9, 0, NULL, 0, 0, 1, 0),
+	('Purchase Order', 10, 0, NULL, 0, 0, 1, 0),
+	('Receipt', 11, 0, NULL, 0, 0, 1, 0),
+	('Receipt Note', 12, 0, NULL, 0, 0, 1, 0),
+	('Rejections Out', 13, 0, NULL, 0, 0, 1, 0),
+	('Reversing	Journal', 14, 0, NULL, 0, 0, 1, 0),
+	('Sales', 15, 0, NULL, 0, 0, 1, 0),
+	('Sales Order', 16, 0, NULL, 0, 0, 1, 0),
+	('Stock Journal', 17, 0, NULL, 0, 0, 1, 0);

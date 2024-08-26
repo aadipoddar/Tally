@@ -3,6 +3,7 @@
 using TallyLibrary.Models;
 
 using TallyWinForms.Gateway.AccountsInfo.Ledgers;
+using TallyWinForms.Gateway.AccountsInfo.VoucherTypes;
 
 namespace Tally.Gateway.AccountsInfo;
 
@@ -35,6 +36,13 @@ public partial class AccountsInfoDashboard : Form
 	{
 		LedgersDashboard ledgersDashboard = new(companyModel);
 		ledgersDashboard.Show();
+		Hide();
+	}
+
+	private void voucherTypesButton_Click(object sender, EventArgs e)
+	{
+		VoucherTypesDashboard voucherTypesDashboard = new(companyModel);
+		voucherTypesDashboard.Show();
 		Hide();
 	}
 }

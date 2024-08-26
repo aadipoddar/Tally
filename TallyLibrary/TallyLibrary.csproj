@@ -24,6 +24,7 @@
     <None Remove="TextFileScripts\OriginalFiles\MethodOfCalculation.txt" />
     <None Remove="TextFileScripts\OriginalFiles\MethodToAllocate.txt" />
     <None Remove="TextFileScripts\OriginalFiles\NatureOfGroup.txt" />
+    <None Remove="TextFileScripts\OriginalFiles\VoucherTypes.txt" />
     <None Remove="TextFileScripts\TableNames.txt" />
   </ItemGroup>
 
@@ -43,6 +44,7 @@
     <EmbeddedResource Include="TextFileScripts\OriginalFiles\MethodOfCalculation.txt" />
     <EmbeddedResource Include="TextFileScripts\OriginalFiles\MethodToAllocate.txt" />
     <EmbeddedResource Include="TextFileScripts\OriginalFiles\NatureOfGroup.txt" />
+    <EmbeddedResource Include="TextFileScripts\OriginalFiles\VoucherTypes.txt" />
     <EmbeddedResource Include="TextFileScripts\TableNames.txt" />
   </ItemGroup>
 

@@ -192,9 +192,9 @@ public partial class CreateGroupForm : Window
 		if (!ValidateAndAssign()) return;
 
 		if (createGroupButton.Content.ToString() == "Alter Group")
-			await GroupData.UpdateGroupTable(groupModel, companyModel.Name);
+			await GroupData.UpdateTable(groupModel, companyModel.Name);
 
-		else await GroupData.InsertIntoGroupTable(groupModel, companyModel.Name);
+		else await GroupData.InsertIntoTable(groupModel, companyModel.Name);
 
 		await groupsDashboard.RefreshGroupList();
 		Close();

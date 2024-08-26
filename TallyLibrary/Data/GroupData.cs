@@ -27,39 +27,39 @@ public static class GroupData
 		return default;
 	}
 
-	public static async Task InsertIntoGroupTable(GroupModel groupModel, string companyName)
+	public static async Task InsertIntoTable(GroupModel groupModel, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.GroupData.InsertIntoGroupTable(groupModel, companyName);
+			await SQL.GroupData.InsertIntoTable(groupModel, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.GroupData.InsertIntoGroupTable(groupModel, companyName);
+			await TextFile.GroupData.InsertIntoTable(groupModel, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.GroupData.InsertIntoGroupTable(groupModel, companyName);
+			await MongoDB.GroupData.InsertIntoTable(groupModel, companyName);
 	}
 
-	public static async Task UpdateGroupTable(GroupModel groupModel, string companyName)
+	public static async Task UpdateTable(GroupModel groupModel, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.GroupData.UpdateGroupTable(groupModel, companyName);
+			await SQL.GroupData.UpdateTable(groupModel, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.GroupData.UpdateGroupTable(groupModel, companyName);
+			await TextFile.GroupData.UpdateTable(groupModel, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.GroupData.UpdateGroupTable(groupModel, companyName);
+			await MongoDB.GroupData.UpdateTable(groupModel, companyName);
 	}
 
-	public static async Task DeleteGroupById(int id, string companyName)
+	public static async Task DeleteById(int id, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.GroupData.DeleteGroupById(id, companyName);
+			await SQL.GroupData.DeleteById(id, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.GroupData.DeleteGroupById(id, companyName);
+			await TextFile.GroupData.DeleteById(id, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.GroupData.DeleteGroupById(id, companyName);
+			await MongoDB.GroupData.DeleteById(id, companyName);
 	}
 }

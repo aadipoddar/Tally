@@ -44,7 +44,7 @@ public partial class LedgersDashboard : Form
 			return;
 		}
 
-		await LedgerData.DeleteLedgerById(((LedgerModel)ledgersListBox.SelectedItem).Id, companyModel.Name);
+		await LedgerData.DeleteById(((LedgerModel)ledgersListBox.SelectedItem).Id, companyModel.Name);
 		await RefreshLedgerList();
 	}
 

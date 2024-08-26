@@ -80,7 +80,7 @@ public partial class GroupsDashboard : Window
 			return;
 		}
 
-		await GroupData.DeleteGroupById(((GroupModel)groupsListBox.SelectedItem).Id, companyModel.Name);
+		await GroupData.DeleteById(((GroupModel)groupsListBox.SelectedItem).Id, companyModel.Name);
 		await RefreshGroupList();
 	}
 }

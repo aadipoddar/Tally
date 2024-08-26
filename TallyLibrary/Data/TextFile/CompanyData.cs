@@ -12,7 +12,7 @@ internal static class CompanyData
 	public static async Task<CompanyModel> LoadCompanyDetails(string companyName) =>
 		(await TextFileDataAccess.ConvertFileContentToModel<CompanyModel>(companyName, "CompanyDetails")).FirstOrDefault();
 
-	public static async Task InsertIntoCompanyTablesAsync(CompanyModel company) =>
+	public static async Task InsertIntoTable(CompanyModel company) =>
 		await TextFileDataAccess.WriteToFile(company.Name, "CompanyDetails", company);
 
 	private static void ChangeDatabaseName(string newCompanyName, string oldCompanyName) =>

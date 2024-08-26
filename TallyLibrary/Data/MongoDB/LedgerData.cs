@@ -12,7 +12,7 @@ internal static class LedgerData
 									.Find(_ => true)
 									.ToListAsync();
 
-	public static async Task InsertIntoLedgerTable(LedgerModel ledgerModel, string companyName)
+	public static async Task InsertIntoTable(LedgerModel ledgerModel, string companyName)
 	{
 		var ledgers = await MongoDBDataAccess.GetCollection<LedgerModel>(companyName, "Ledgers")
 										.Find(_ => true)
@@ -22,11 +22,11 @@ internal static class LedgerData
 		await MongoDBDataAccess.GetCollection<LedgerModel>(companyName, "Ledgers").InsertOneAsync(ledgerModel);
 	}
 
-	public static async Task UpdateLedgerTable(LedgerModel ledgerModel, string companyName) =>
+	public static async Task UpdateTable(LedgerModel ledgerModel, string companyName) =>
 			await MongoDBDataAccess.GetCollection<LedgerModel>(companyName, "Ledgers")
 								.ReplaceOneAsync(ledger => ledger.Id == ledgerModel.Id, ledgerModel);
 
-	public static async Task DeleteLedgerById(int id, string companyName) =>
+	public static async Task DeleteById(int id, string companyName) =>
 			await MongoDBDataAccess.GetCollection<LedgerModel>(companyName, "Ledgers")
 								.DeleteOneAsync(ledger => ledger.Id == id);
 }

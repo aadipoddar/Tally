@@ -44,7 +44,7 @@ public partial class VoucherTypesDashboard : Form
 			return;
 		}
 
-		await VoucherTypeData.DeleteVoucherTypeById(((VoucherTypeModel)voucherTypesListBox.SelectedItem).Id, companyModel.Name);
+		await VoucherTypeData.DeleteById(((VoucherTypeModel)voucherTypesListBox.SelectedItem).Id, companyModel.Name);
 		await RefreshVoucherTypesList();
 	}
 

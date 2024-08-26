@@ -35,7 +35,7 @@ internal static class CompanyData
 				.Projection.Exclude("_id"))
 				.FirstOrDefaultAsync();
 
-	public static async Task InsertIntoCompanyTablesAsync(CompanyModel company) =>
+	public static async Task InsertIntoTable(CompanyModel company) =>
 		await MongoDBDataAccess.GetCollection<CompanyModel>(company.Name, "CompanyDetails").InsertOneAsync(company);
 
 	private static void ChangeDatabaseName(CompanyModel company, string oldCompanyName)

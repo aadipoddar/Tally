@@ -63,7 +63,7 @@ public partial class CreateCompanyForm : Form
 		if (createCompanyButton.Text == "Create Company")
 		{
 			await DatabaseSetup.CreateDatabase(companyModel.Name);
-			await CompanyData.InsertIntoCompanyTablesAsync(companyModel);
+			await CompanyData.InsertIntoTable(companyModel);
 		}
 
 		if (createCompanyButton.Text == "Alter Company")

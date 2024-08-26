@@ -12,7 +12,7 @@ internal static class GroupData
 									.Find(_ => true)
 									.ToListAsync();
 
-	public static async Task InsertIntoGroupTable(GroupModel groupModel, string companyName)
+	public static async Task InsertIntoTable(GroupModel groupModel, string companyName)
 	{
 		var groups = await MongoDBDataAccess.GetCollection<GroupModel>(companyName, "Groups")
 										.Find(_ => true)
@@ -22,11 +22,11 @@ internal static class GroupData
 		await MongoDBDataAccess.GetCollection<GroupModel>(companyName, "Groups").InsertOneAsync(groupModel);
 	}
 
-	public static async Task UpdateGroupTable(GroupModel groupModel, string companyName) =>
+	public static async Task UpdateTable(GroupModel groupModel, string companyName) =>
 			await MongoDBDataAccess.GetCollection<GroupModel>(companyName, "Groups")
 								.ReplaceOneAsync(group => group.Id == groupModel.Id, groupModel);
 
-	public static async Task DeleteGroupById(int id, string companyName) =>
+	public static async Task DeleteById(int id, string companyName) =>
 			await MongoDBDataAccess.GetCollection<GroupModel>(companyName, "Groups")
 								.DeleteOneAsync(group => group.Id == id);
 }

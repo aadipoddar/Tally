@@ -103,9 +103,9 @@ public partial class CreateVoucherTypeForm : Form
 		if (!ValidateAndAssign()) return;
 
 		if (createVoucherTypeButton.Text == "Alter Voucher Type")
-			await VoucherTypeData.UpdateVoucherTypeTable(voucherTypeModel, companyModel.Name);
+			await VoucherTypeData.UpdateTable(voucherTypeModel, companyModel.Name);
 
-		else await VoucherTypeData.InsertIntoVoucherTypeTable(voucherTypeModel, companyModel.Name);
+		else await VoucherTypeData.InsertIntoTable(voucherTypeModel, companyModel.Name);
 		await voucherTypesDashboard.RefreshVoucherTypesList();
 		Close();
 	}

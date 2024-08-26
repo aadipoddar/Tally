@@ -242,9 +242,9 @@ public partial class CreateLedgerForm : Window
 		if (!ValidateAndAssign()) return;
 
 		if (createLedgerButton.Content.ToString() == "Alter Ledger")
-			await LedgerData.UpdateLedgerTable(ledgerModel, companyModel.Name);
+			await LedgerData.UpdateTable(ledgerModel, companyModel.Name);
 
-		else await LedgerData.InsertIntoLedgerTable(ledgerModel, companyModel.Name);
+		else await LedgerData.InsertIntoTable(ledgerModel, companyModel.Name);
 		await ledgersDashboard.RefreshLedgerList();
 		Close();
 	}

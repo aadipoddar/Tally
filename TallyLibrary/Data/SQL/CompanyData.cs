@@ -16,7 +16,7 @@ internal static class CompanyData
 	public static async Task<CompanyModel> LoadCompanyDetails(string companyName) =>
 		(await SqlDataAccess.LoadDataSQL<CompanyModel>(await GetSQL.GetSQLContent("Common.LoadTableData", "CompanyDetails"), $"{companyName}Tally")).FirstOrDefault();
 
-	public static async Task InsertIntoCompanyTablesAsync(CompanyModel company) =>
+	public static async Task InsertIntoTable(CompanyModel company) =>
 			await SqlDataAccess.RunSQL(GetSQL.GetSQLContent(SQLCommands.INSERT, company, "CompanyDetails"), $"{company.Name}Tally");
 
 	private static async Task ChangeDatabaseName(string newCompanyName, string oldCompanyName) =>

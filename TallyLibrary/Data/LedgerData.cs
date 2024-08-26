@@ -19,39 +19,39 @@ public static class LedgerData
 		return default;
 	}
 
-	public static async Task InsertIntoLedgerTable(LedgerModel ledgerModel, string companyName)
+	public static async Task InsertIntoTable(LedgerModel ledgerModel, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.LedgerData.InsertIntoLedgerTable(ledgerModel, companyName);
+			await SQL.LedgerData.InsertIntoTable(ledgerModel, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.LedgerData.InsertIntoLedgerTable(ledgerModel, companyName);
+			await TextFile.LedgerData.InsertIntoTable(ledgerModel, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.LedgerData.InsertIntoLedgerTable(ledgerModel, companyName);
+			await MongoDB.LedgerData.InsertIntoTable(ledgerModel, companyName);
 	}
 
-	public static async Task UpdateLedgerTable(LedgerModel ledgerModel, string companyName)
+	public static async Task UpdateTable(LedgerModel ledgerModel, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.LedgerData.UpdateLedgerTable(ledgerModel, companyName);
+			await SQL.LedgerData.UpdateTable(ledgerModel, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.LedgerData.UpdateLedgerTable(ledgerModel, companyName);
+			await TextFile.LedgerData.UpdateTable(ledgerModel, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.LedgerData.UpdateLedgerTable(ledgerModel, companyName);
+			await MongoDB.LedgerData.UpdateTable(ledgerModel, companyName);
 	}
 
-	public static async Task DeleteLedgerById(int id, string companyName)
+	public static async Task DeleteById(int id, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.LedgerData.DeleteLedgerById(id, companyName);
+			await SQL.LedgerData.DeleteById(id, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.LedgerData.DeleteLedgerById(id, companyName);
+			await TextFile.LedgerData.DeleteById(id, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.LedgerData.DeleteLedgerById(id, companyName);
+			await MongoDB.LedgerData.DeleteById(id, companyName);
 	}
 }

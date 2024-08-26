@@ -19,39 +19,39 @@ public class VoucherTypeData
 		return default;
 	}
 
-	public static async Task InsertIntoVoucherTypeTable(VoucherTypeModel voucherTypeModel, string companyName)
+	public static async Task InsertIntoTable(VoucherTypeModel voucherTypeModel, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.VoucherTypeData.InsertIntoVoucherTypeTable(voucherTypeModel, companyName);
+			await SQL.VoucherTypeData.InsertIntoTable(voucherTypeModel, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.VoucherTypeData.InsertIntoVoucherTypeTable(voucherTypeModel, companyName);
+			await TextFile.VoucherTypeData.InsertIntoTable(voucherTypeModel, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.VoucherTypeData.InsertIntoVoucherTypeTable(voucherTypeModel, companyName);
+			await MongoDB.VoucherTypeData.InsertIntoTable(voucherTypeModel, companyName);
 	}
 
-	public static async Task UpdateVoucherTypeTable(VoucherTypeModel voucherTypeModel, string companyName)
+	public static async Task UpdateTable(VoucherTypeModel voucherTypeModel, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.VoucherTypeData.UpdateVoucherTypeTable(voucherTypeModel, companyName);
+			await SQL.VoucherTypeData.UpdateTable(voucherTypeModel, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.VoucherTypeData.UpdateVoucherTypeTable(voucherTypeModel, companyName);
+			await TextFile.VoucherTypeData.UpdateTable(voucherTypeModel, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.VoucherTypeData.UpdateVoucherTypeTable(voucherTypeModel, companyName);
+			await MongoDB.VoucherTypeData.UpdateTable(voucherTypeModel, companyName);
 	}
 
-	public static async Task DeleteVoucherTypeById(int id, string companyName)
+	public static async Task DeleteById(int id, string companyName)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.VoucherTypeData.DeleteVoucherTypeById(id, companyName);
+			await SQL.VoucherTypeData.DeleteById(id, companyName);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.VoucherTypeData.DeleteVoucherTypeById(id, companyName);
+			await TextFile.VoucherTypeData.DeleteById(id, companyName);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.VoucherTypeData.DeleteVoucherTypeById(id, companyName);
+			await MongoDB.VoucherTypeData.DeleteById(id, companyName);
 	}
 }

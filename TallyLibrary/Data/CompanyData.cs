@@ -33,16 +33,16 @@ public static class CompanyData
 		return default;
 	}
 
-	public static async Task InsertIntoCompanyTablesAsync(CompanyModel company)
+	public static async Task InsertIntoTable(CompanyModel company)
 	{
 		if (DataLocation.IsDatabase())
-			await SQL.CompanyData.InsertIntoCompanyTablesAsync(company);
+			await SQL.CompanyData.InsertIntoTable(company);
 
 		if (DataLocation.IsTextFile())
-			await TextFile.CompanyData.InsertIntoCompanyTablesAsync(company);
+			await TextFile.CompanyData.InsertIntoTable(company);
 
 		if (DataLocation.IsMongoDBCloud() || DataLocation.IsMongoDBLocal())
-			await MongoDB.CompanyData.InsertIntoCompanyTablesAsync(company);
+			await MongoDB.CompanyData.InsertIntoTable(company);
 	}
 
 	public static async Task UpdateCompanyDetails(CompanyModel company, string oldCompanyName, bool companyNameChanged = false)

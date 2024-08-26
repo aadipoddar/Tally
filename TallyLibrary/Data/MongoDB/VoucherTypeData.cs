@@ -12,7 +12,7 @@ internal static class VoucherTypeData
 									.Find(_ => true)
 									.ToListAsync();
 
-	public static async Task InsertIntoVoucherTypeTable(VoucherTypeModel voucherTypeModel, string companyName)
+	public static async Task InsertIntoTable(VoucherTypeModel voucherTypeModel, string companyName)
 	{
 		var ledgers = await MongoDBDataAccess.GetCollection<VoucherTypeModel>(companyName, "VoucherTypes")
 										.Find(_ => true)
@@ -22,11 +22,11 @@ internal static class VoucherTypeData
 		await MongoDBDataAccess.GetCollection<VoucherTypeModel>(companyName, "VoucherTypes").InsertOneAsync(voucherTypeModel);
 	}
 
-	public static async Task UpdateVoucherTypeTable(VoucherTypeModel voucherTypeModel, string companyName) =>
+	public static async Task UpdateTable(VoucherTypeModel voucherTypeModel, string companyName) =>
 			await MongoDBDataAccess.GetCollection<VoucherTypeModel>(companyName, "VoucherTypes")
 								.ReplaceOneAsync(voucherType => voucherType.Id == voucherTypeModel.Id, voucherTypeModel);
 
-	public static async Task DeleteVoucherTypeById(int id, string companyName) =>
+	public static async Task DeleteById(int id, string companyName) =>
 			await MongoDBDataAccess.GetCollection<VoucherTypeModel>(companyName, "VoucherTypes")
 								.DeleteOneAsync(voucherType => voucherType.Id == id);
 }

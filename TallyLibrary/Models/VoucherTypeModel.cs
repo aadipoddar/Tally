@@ -30,3 +30,16 @@ public class MethodOfNumberingModel
 			Value = "None";
 	}
 }
+
+public class DebitCreditModel
+{
+	public string Value { get; }
+
+	public int Bit { get; set; }
+
+	public DebitCreditModel(int bitValue)
+	{
+		Bit = bitValue;
+		Value = bitValue == 1 ? "Debit" : "Credit";
+	}
+}

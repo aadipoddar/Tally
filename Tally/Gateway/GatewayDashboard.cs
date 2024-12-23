@@ -2,6 +2,8 @@
 
 using TallyLibrary.Models;
 
+using TallyWinForms.Gateway.Vouchers;
+
 namespace Tally.Gateway;
 
 public partial class GatewayDashboard : Form
@@ -25,6 +27,13 @@ public partial class GatewayDashboard : Form
 	{
 		AccountsInfoDashboard accountsInfoDashboard = new(companyModel);
 		accountsInfoDashboard.Show();
+		Hide();
+	}
+
+	private void accountingVouchersButton_Click(object sender, EventArgs e)
+	{
+		SelectVoucherType selectVoucherType = new(companyModel);
+		selectVoucherType.Show();
 		Hide();
 	}
 }

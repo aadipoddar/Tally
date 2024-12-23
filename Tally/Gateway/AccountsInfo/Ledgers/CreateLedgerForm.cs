@@ -23,7 +23,6 @@ public partial class CreateLedgerForm : Form
 	public async Task LoadComboBoxes()
 	{
 		var groups = (await GroupData.LoadTableData<GroupModel>("Groups", companyModel.Name)).ToList();
-		groups.RemoveAt(0);
 		SetBoolComboBoxes(underComboBox, groups, "Name", "Id");
 		SetBoolComboBoxes(inventoryAffectedComboBox, new List<BoolBit>() { new(0), new(1) }, "Value", "Bit");
 		SetBoolComboBoxes(maintainBalancesComboBox, new List<BoolBit>() { new(0), new(1) }, "Value", "Bit");
@@ -39,6 +38,9 @@ public partial class CreateLedgerForm : Form
 
 	private void underComboBox_SelectedValueChanged(object sender, EventArgs e)
 	{
+		if ((GroupModel)underComboBox.SelectedItem is null)
+			return;
+
 		if (((GroupModel)underComboBox.SelectedItem).Id == 2 || ((GroupModel)underComboBox.SelectedItem).Id == 3 || ((GroupModel)underComboBox.SelectedItem).Under == 2 || ((GroupModel)underComboBox.SelectedItem).Under == 3)
 		{
 			dateReconciliationLabel.Visible = true;

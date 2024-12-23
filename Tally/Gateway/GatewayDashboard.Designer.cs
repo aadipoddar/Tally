@@ -29,6 +29,7 @@ partial class GatewayDashboard
 	private void InitializeComponent()
 	{
 		accountsInfoButton = new Button();
+		accountingVouchersButton = new Button();
 		SuspendLayout();
 		// 
 		// accountsInfoButton
@@ -41,11 +42,22 @@ partial class GatewayDashboard
 		accountsInfoButton.UseVisualStyleBackColor = true;
 		accountsInfoButton.Click += accountsInfoButton_Click;
 		// 
+		// accountingVouchersButton
+		// 
+		accountingVouchersButton.Location = new Point(12, 93);
+		accountingVouchersButton.Name = "accountingVouchersButton";
+		accountingVouchersButton.Size = new Size(200, 75);
+		accountingVouchersButton.TabIndex = 1;
+		accountingVouchersButton.Text = "Accounting Vouchers";
+		accountingVouchersButton.UseVisualStyleBackColor = true;
+		accountingVouchersButton.Click += accountingVouchersButton_Click;
+		// 
 		// GatewayDashboard
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(234, 411);
+		Controls.Add(accountingVouchersButton);
 		Controls.Add(accountsInfoButton);
 		Name = "GatewayDashboard";
 		StartPosition = FormStartPosition.CenterScreen;
@@ -57,4 +69,5 @@ partial class GatewayDashboard
 	#endregion
 
 	private Button accountsInfoButton;
+	private Button accountingVouchersButton;
 }
